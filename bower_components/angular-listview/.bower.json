@@ -1,0 +1,40 @@
+{
+  "name": "angular-listview",
+  "version": "0.1.0",
+  "authors": [
+    "weston <me@westonfribley.com>"
+  ],
+  "description": "simple, flexible, angular list view -- select, add, edit, remove",
+  "main": "listview.js",
+  "keywords": [
+    "angular",
+    "list",
+    "list view",
+    "directive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "angular": "~1.2.25",
+    "angular-animate": "v1.2.26"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.25"
+  },
+  "homepage": "https://github.com/wtfribley/angular-listview",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "b861e33c6a01ff0bdb33e526b9977e9d48a3b75d"
+  },
+  "_source": "https://github.com/wtfribley/angular-listview.git",
+  "_target": "^0.1.0",
+  "_originalSource": "angular-listview",
+  "_direct": true
+}

@@ -1,0 +1,15 @@
+{
+  "name": "style",
+  "homepage": "https://github.com/bensmithett/style",
+  "version": "4.0.0",
+  "_release": "4.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "4.0.0",
+    "commit": "99a0bf4e9477c422333cbc9f2a6d69da7e858b5c"
+  },
+  "_source": "https://github.com/bensmithett/style.git",
+  "_target": "^4.0.0",
+  "_originalSource": "style",
+  "_direct": true
+}
