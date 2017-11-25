@@ -39,8 +39,8 @@ class connect_pdo
 	protected $con;
         private   $db_host="localhost";
         private   $db_name="relay";
-        private   $db_user="root";
-        private   $user_pw="";
+        private   $db_user="sysadmin";
+        private   $user_pw="4528xi4528root";
 
 
         public function __construct(){

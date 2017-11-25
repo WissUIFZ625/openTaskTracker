@@ -17,14 +17,14 @@ if (isset($_POST['email'], $_POST['p'])) {
   
     if (login($email, $password, $pdo) == true) {
         $firstLogin = 1;
-    	$url=get_user_url($pdo);
+    	//$url=get_user_url($pdo);
         $_SESSION['email'] = $email;
 
         $firstLogincheck = firstLogin($pdo, $firstLogin);
 
             if($firstLogincheck){
 
-                header("Location: ../connectxaxada.php");  //../connect ist korrekt !!!!!!!!!!!!
+                header("Location: ../openTaskTracker.php");  //../connect ist korrekt !!!!!!!!!!!!
                 exit();
 
             }else{
