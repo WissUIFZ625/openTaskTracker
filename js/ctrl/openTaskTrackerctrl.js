@@ -6,51 +6,113 @@ var mytimer;
 openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog)
 {
 	$scope.customerdata =
-	{
-		id:-1,
-		email:'',
-		gender:-1,
-		name:-1,
-		surname:'',
-		address:'',
-		plz:-1,
-		city:'',
-		tel:-1,
+        {
+            "A": [
+                {
+                    "type": "container",
+                    "id": 1,
+                    "columns": [
+                        [
+                            {
+                                "type": "item",
+                                "id": "1"
+                            },
+                            {
+                                "type": "item",
+                                "id": "2"
+                            }
+                        ],
+                        [
+                            {
+                                "type": "item",
+                                "id": "3"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "type": "item",
+                    "id": "4"
+                },
+                {
+                    "type": "item",
+                    "id": "5"
+                },
+                {
+                    "type": "item",
+                    "id": "6"
+                }
+            ],
+            "B": [
+                {
+                    "type": "item",
+                    "id": 7
+                },
+                {
+                    "type": "item",
+                    "id": "8"
+                },
+                {
+                    "type": "container",
+                    "id": "2",
+                    "columns": [
+                        [
+                            {
+                                "type": "item",
+                                "id": "9"
+                            },
+                            {
+                                "type": "item",
+                                "id": "10"
+                            },
+                            {
+                                "type": "item",
+                                "id": "11"
+                            }
+                        ],
+                        [
+                            {
+                                "type": "item",
+                                "id": "12"
+                            },
+                            {
+                                "type": "container",
+                                "id": "3",
+                                "columns": [
+                                    [
+                                        {
+                                            "type": "item",
+                                            "id": "13"
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "type": "item",
+                                            "id": "14"
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "type": "item",
+                                "id": "15"
+                            },
+                            {
+                                "type": "item",
+                                "id": "16"
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "type": "item",
+                    "id": 16
+                }
+            ]
+        };
 
-		password:-1,//only set, no get
-		//salt:-1,//only set, no get//probably not even needed
-		deactivatedon:-1,
-		acc_confirmcode:-1,
-		cmail_sent:-1,
-		//ident_hash:-1
-		ident:{
-              identify_hash: -1,
-              dbmail_sent:-1,
-			  ident_confirmcode:-1,
-			  land:'',
-              standort:'',
-              namerp:'',
-            },
-	};
-	//$scope.new_ident_hash=-1;
-	$scope.new_ident_hash="";
-    $scope.endtype="0";
-
-    $scope.admin = {
-        old_pw: "",
-        pw: "",
-        comparepw: "",
-        new_email:"",
-        new_email_compare:"",
-    };
 
 
-
-
-    $scope.states = ('Schweiz Deutschland Frankreich Italien ' +
-        'Österreich Spanien').split(' ').map(function(state) {
-        return {abbrev: state};
-    });
 
 	
 	
