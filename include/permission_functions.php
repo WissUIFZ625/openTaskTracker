@@ -248,7 +248,7 @@ function get_grp_right_for_location($group_id, $location_id, $locs, $perms){
 
 function get_user_url($mysqlcon) 
 {
-	$user_url = PractiframeUrl::DEFAULT_USER_URL;
+	$user_url = openTaskTrackerUrl::DEFAULT_USER_URL;
 	
 	$allowedl=false;
 	$stmtloc = $mysqlcon->prepare("SELECT * from location");
@@ -304,7 +304,7 @@ function get_user_url($mysqlcon)
 	}
 	
 	if(!$allowedl){
-		$user_url=PractiframeUrl::NO_ROOM_URL;
+		$user_url=openTaskTrackerUrl::NO_ROOM_URL;
 	}
 
 
@@ -321,34 +321,34 @@ function is_allowed_user_url($user_url, $perm)
 
 	switch($user_url){
 
-		case PractiframeUrl::WEBSWITCH_URL :
+		case openTaskTrackerUrl::WEBSWITCH_URL :
 			$result = ( (LocationRight::_SWITCH & intval($perm)) == LocationRight::_SWITCH );
 			break;
-		case PractiframeUrl::WEBSWITCH_CONF_URL :
+		case openTaskTrackerUrl::WEBSWITCH_CONF_URL :
 			$result = ( (LocationRight::CONF & intval($perm)) ==  LocationRight::CONF );
 			break;
-		case PractiframeUrl::ENOSWITCH_CONF_URL :
+		case openTaskTrackerUrl::ENOSWITCH_CONF_URL :
 			$result = ( (LocationRight::CONF & intval($perm)) ==  LocationRight::CONF );
 			break;
-		case PractiframeUrl::ENOSWITCH_INSTALL_URL :
+		case openTaskTrackerUrl::ENOSWITCH_INSTALL_URL :
 			$result = ( (LocationRight::CONF & intval($perm)) == LocationRight::CONF );
 			break;
-		case PractiframeUrl::USER_URL :
+		case openTaskTrackerUrl::USER_URL :
 				$result = ( (LocationRight::CONF & intval($perm)) == LocationRight::CONF );
 				break;
-		case PractiframeUrl::LOCATION_URL :
+		case openTaskTrackerUrl::LOCATION_URL :
 			$result = ( (LocationRight::CONF & intval($perm)) == LocationRight::CONF );
 			break;
-		case PractiframeUrl::ACCESS_URL :
+		case openTaskTrackerUrl::ACCESS_URL :
 			$result = ( (LocationRight::CONF & intval($perm)) == LocationRight::CONF );
 			break;
-		case PractiframeUrl::MOBILE2_URL :
+		case openTaskTrackerUrl::MOBILE2_URL :
 			$result = ( (LocationRight::_SWITCH & intval($perm)) == LocationRight::_SWITCH );
 			break;
-		case PractiframeUrl::MOBILE3_URL :
+		case openTaskTrackerUrl::MOBILE3_URL :
 			$result = ( (LocationRight::_SWITCH & intval($perm)) == LocationRight::_SWITCH );
 			break;
-		case PractiframeUrl::DEFAULT_USER_URL : // Eingefügt, Pfad /Permissionbug zu beheben
+		case openTaskTrackerUrl::DEFAULT_USER_URL : // Eingefügt, Pfad /Permissionbug zu beheben
 			$result = ( (LocationRight::_SWITCH & intval($perm)) == LocationRight::_SWITCH );
 			break;
 		default:

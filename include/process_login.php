@@ -24,11 +24,11 @@ if (isset($_POST['email'], $_POST['p'])) {
 
             if($firstLogincheck){
 
-                header("Location: ../openTaskTracker.php");  //../connect ist korrekt !!!!!!!!!!!!
+                header("Location: ../connectxaxada.php");  //../connect ist korrekt !!!!!!!!!!!!
                 exit();
 
             }else{
-                header("Location: $url");
+                header("Location: ../openTaskTracker.php");
                 exit();
             }
 

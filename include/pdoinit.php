@@ -9,7 +9,7 @@ class LocationRight {
 	const CONF = 31;
 }
 
-class PractiframeUrl {
+class openTaskTrackerUrl {
 
 	const DEFAULT_USER_URL = "../switchgui.php";//Angepasst, da sonst neue User mit Berechtigung auf include/switchgui.php weitergeleitet werden
 
@@ -39,8 +39,11 @@ class connect_pdo
 	protected $con;
         private   $db_host="localhost";
         private   $db_name="relay";
-        private   $db_user="sysadmin";
-        private   $user_pw="4528xi4528root";
+
+        //private   $db_user="root";
+       // private   $user_pw="";
+        private   $db_user="benutzername";
+        private   $user_pw="pw";
 
 
         public function __construct(){
@@ -63,7 +66,7 @@ class connect_pdo
         public function getSqlCredentials(){
 
 
-            $ini_array = @parse_ini_file("/opt/practiframe/practiframe.ini", TRUE);//pathmark
+            $ini_array = @parse_ini_file("/opt/openTaskTracker/openTaskTracker.ini", TRUE);//pathmark
             if ($ini_array == FALSE) return;
 
             if( array_key_exists("dbhost", $ini_array["Database"])){
