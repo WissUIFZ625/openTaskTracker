@@ -1,4 +1,4 @@
-var cockpit_interApp = angular.module('openTaskTracker_App', ['ngMaterial']);
+var openTaskTracker_App = angular.module('openTaskTracker_App', ['ngMaterial']);
 //var baseUrl = 'http://localhost:54037/Home/'
 
 var mytimer;
