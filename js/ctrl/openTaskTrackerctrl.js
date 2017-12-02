@@ -120,7 +120,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
     $scope.showNewTaskDialog = function () {
         $mdDialog.show({
-            contentElement: '#newProject',
+            contentElement: '#newTaskProject',
             parent: angular.element(document.body),
             clickOutsideToClose: true,
             escapeToClose: true
