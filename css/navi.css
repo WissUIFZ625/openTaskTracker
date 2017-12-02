@@ -1,0 +1,220 @@
+body {
+    font-size:100%;
+	margin:0em;
+	padding:0em;
+	font-family:"Verdana";
+	font-weight:100;
+}
+.logomain
+{
+	top: 0.5%;
+	left: 0.5%;
+	width: 80%;
+	height: 100%;
+}
+.logomainDiv
+{
+	top: 0.5%;
+	left: 0.5%;
+	width: 10%;
+	height: 13.5%;
+	position: absolute;
+}
+.logomain:hover
+{
+	border-style:dotted;
+	border-color:#C8C9CC;	
+}
+.navcorL
+{
+	top:0%;
+	left:9%;
+	height: 37px;	
+	width:2%;
+	position:absolute;
+}
+.topnav
+{
+	background-color:#bcc5ca;
+	top:0%;
+	left:11%;
+	height: 37px;	
+	width:79%;
+	position:absolute;
+	font-family:Verdana;
+	font-weight: 100;
+}
+.topnavminicon
+{
+	background-color:#335970;
+	top:0%;
+	left:11%;
+	height:3.5%;
+	position:absolute;
+	z-index:2;
+	display:none;
+}
+.navcorR
+{
+	top:0%;
+	left:90%;
+	height: 37px;
+	width:2%;
+	position:absolute;
+}
+.topnavitem
+{
+	margin-top:0.3%;
+	margin-left:6%;
+	margin-bottom:0.5%;
+	color:#CCCCCC;
+}
+.topnavitem:active
+{
+	color:#ffffff;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content 
+{
+    display: none;
+    position: absolute;
+    background-color: #335970;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 5px 5px 5px;
+	z-index:2;
+	color:color:#999;
+	/*Pixelangaben, sind problematisch?*/
+}
+
+.dropdown:hover .dropdown-content
+{
+    display: block;
+}
+.dropdown-content:active
+{
+	color:#ffffff; 	
+}
+
+
+.menubar
+{
+    margin-top: 2% !important;
+    position: absolute;
+    border-style: none;
+    height: 50px;
+    width: 60%;
+    font-size: large;
+    padding-left: 7%;
+}
+.menubarminicon
+{
+	border-style:none;
+	height:inherit;
+	font-weight:inherit;
+	font-size:inherit;
+	margin:inherit;
+	float:left;
+	display:none;
+}
+
+#Verbraucher{
+	border-style: none;
+	height: inherit;
+	text-align: center;
+	padding-left: 3px;
+	margin-top: 18px;
+	font-weight: 100;
+	font-size: 71%;
+	padding: 3px;
+	overflow: hidden;
+}
+#Freigaben, #SchalterSensoren, #Verbinden, #Webschalter, #Logik, #Uebersicht, #Gruppen, #Schalten,#Freigaben, #Berechtigungen, #Benutzer, #to_cockpit
+{
+	border-style: none;
+	height: inherit;
+	text-align: center;
+	padding-left: 3px;
+	margin-top: 18px;
+	font-weight: 100;
+	border-left: 3px;
+	border-color: rgb(174, 199, 195);
+	border-left-style: solid;
+	font-size: 71%;
+	padding: 3px;
+	overflow: hidden;
+}
+#Verbraucher:hover, #SchalterSensoren:hover, #Verbinden:hover, #Webschalter:hover, #Logik:hover, #Uebersicht:hover, #Gruppen:hover, #Schalten:hover,#Freigaben:hover, #Benutzer:hover, #Berechtigungen:hover
+{
+	border-style:solid;
+	border-color:#000000;
+}
+#Verbraucher:active, #SchalterSensoren:active, #Verbinden:active, #Webschalter:active, #Logik:active, #Uebersicht:active, #Gruppen:active, #Schalten:active, #Berechtigungen:active,#Freigaben:active, #Benutzer:active
+{
+	border-style:solid;
+	border-color:#ffffff;
+}
+#Verbraucher
+{
+	background-color:#e5b2b2;	
+}
+#SchalterSensoren
+{
+	background-color:#f0d390;
+}
+#Verbinden
+{
+	background-color:#f1b253;
+}
+#Webschalter
+{
+	background-color:#63e56d;
+}
+#Logik
+{
+	background-color:#aabf00;
+}
+#Uebersicht
+{
+    background-color:#28d694;
+}
+#Gruppen
+{
+	background-color:#84d8e0;
+}
+#Schalten
+{
+	background-color:#91cc72;
+}
+#Berechtigungen
+{
+	background-color:#7abdf7;
+}
+#Benutzer
+{
+	background-color:#72a2cc;
+}
+#Freigaben{
+	background-color:#63d9e5;
+}
+#to_cockpit{
+background-color:#EFD883;
+}
+
+.favs{
+    background-color: #195d41;
+    height: 786px;
+	margin-top: 69px;
+}
+.link:hover {
+	text-decoration: underline;
+}
+
+.useredit{
+	margin-left: -10px;
+	top:5px;
+}

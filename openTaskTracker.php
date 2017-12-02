@@ -8,12 +8,11 @@ require_once 'include/loginfunctions.php';
 sec_session_start();
 ?>
 
-<html lang="de" ng-app="cockpit_interApp" class="responsivelayout">
+<html lang="de" ng-app="openTaskTracker_App" class="responsivelayout">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>openTaskTracker Online</title>
     <link rel="stylesheet" href="css/screen.min.css"/>
-    <link rel="stylesheet" href="css_inter/style.css"/>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
@@ -35,29 +34,39 @@ sec_session_start();
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" type="text/css" href="css_inter/menu.css">
-    <link rel="stylesheet" type="text/css" href="css_inter/result-light.css">
+
     <link href="bower_components/hover/css/hover-min.css" rel="stylesheet" media="all">
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="css_inter/bootstrap.min.css"/>
 
-    <link rel="stylesheet" href="css_inter/jquery-ui.css">
-    <link rel="stylesheet" href="css_inter/cleanslate.css"/>
 
-    <link href="css_inter/styles.css" rel="stylesheet" type="text/css">
-    <link href="css_inter/hamburgler.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css_inter/configuration.css" type="text/css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css_inter/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css_inter/customer_cockpit_inter.css">
-    <!--<script src="js_inter/configuration.js"></script>-->
 
-    <script src="js/openTaskTracker.js.js"></script>
+    <script src="js/openTaskTracker.js"></script>
     <script src="js/ctrl/openTaskTrackerctrl.js"></script>
 
 </head>
 <body id="atmosphere-responsive" class="js notouch loaded" ng-controller="openTaskTracker_Ctrl">
-<?php //require_once 'include/navi.php';?>
-<h1>Hallo du bist eingeloggt. Hier entsteht unser Tracker</h1>
+
+
+
+<div>
+    <!--<h1>Logged in</h1>-->
+    <div>
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">Kundendaten</div>
+        </md-toolbar>
+        <md-content class="customcoumn" layout-gt-md="row" layout-padding>
+
+            <md-input-container>
+                <label>Vorname</label>
+                <input ng-change="showSaveButton = true" ng-model="customerdata.name" type="text">
+            </md-input-container>
+            <md-input-container>
+                <label>Nachname</label>
+                <input ng-change="showSaveButton = true" ng-model="customerdata.surname" type="text">
+            </md-input-container>
+        </md-content>
+    </div>
+</div>
 
 </body>
 </html>
