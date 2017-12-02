@@ -24,6 +24,7 @@ sec_session_start();
     <script src="bower_components/angular-material/angular-material.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen"
           href="bower_components/angular-material/angular-material.min.css"/>
+    <script src="js/angular-drag-and-drop-lists.js"></script>
 
     <!--End of Injected for Angular Dialogs-->
 
@@ -76,13 +77,10 @@ sec_session_start();
     </div>
 
 <div class="alert alert-success">
-    <strong>Instructions:</strong>
-    Drag &amp; drop the list items to move them around, or just click to select them.
-    If that's too boring, check out the <a href="#/nested">nested container demo</a>
+    <strong>Hallo aglile Welt:</strong>
 </div>
 
 <div class="simpleDemo row">
-
     <div class="col-md-8">
         <div class="row">
             <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
@@ -102,7 +100,34 @@ sec_session_start();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Generated Model</h3>
+                <h3 class="panel-title">$Sprint$</h3>
+            </div>
+            <div class="panel-body">
+                <pre class="code">{
+        "label": "Item A1"
+      },
+      {
+        "label": "Item B3"
+      },
+      {
+        "label": "Item B2"
+      },
+      {
+        "label": "Item A2"
+      },
+      {
+        "label": "Item B1"
+      },
+      {
+        "label": "Item A3"
+      }</pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">$Backlog$</h3>
             </div>
             <div class="panel-body">
                 <pre class="code">{{modelAsJson}}</pre>
