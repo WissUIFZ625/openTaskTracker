@@ -64,7 +64,6 @@ sec_session_start();
 
 
 <div>
-    <!--<h1>Logged in</h1>-->
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
@@ -96,46 +95,6 @@ sec_session_start();
         <div view-source="simple"></div>
 
     </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">$Sprint$</h3>
-            </div>
-            <div class="panel-body">
-                <pre class="code">{
-        "label": "Item A1"
-      },
-      {
-        "label": "Item B3"
-      },
-      {
-        "label": "Item B2"
-      },
-      {
-        "label": "Item A2"
-      },
-      {
-        "label": "Item B1"
-      },
-      {
-        "label": "Item A3"
-      }</pre>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">$Backlog$</h3>
-            </div>
-            <div class="panel-body">
-                <pre class="code">{{modelAsJson}}</pre>
-            </div>
-        </div>
-    </div>
-
-</div>
 </body>
 </html>
 

@@ -5,116 +5,38 @@ var mytimer;
 
 openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog)
 {
-	$scope.customerdata =
-        {
-            "A": [
+    $scope.models = {
+        selected: null,
+        lists: {"A": [{
+                "label": "Item A1"
+            },
                 {
-                    "type": "container",
-                    "id": 1,
-                    "columns": [
-                        [
-                            {
-                                "type": "item",
-                                "id": "1"
-                            },
-                            {
-                                "type": "item",
-                                "id": "2"
-                            }
-                        ],
-                        [
-                            {
-                                "type": "item",
-                                "id": "3"
-                            }
-                        ]
-                    ]
+                    "label": "Item A2"
                 },
                 {
-                    "type": "item",
-                    "id": "4"
+                    "label": "Item A3"
+                }], "B": [{
+                "label": "Item B1"
+            },
+                {
+                    "label": "Item B2"
                 },
                 {
-                    "type": "item",
-                    "id": "5"
-                },
-                {
-                    "type": "item",
-                    "id": "6"
-                }
-            ],
-            "B": [
-                {
-                    "type": "item",
-                    "id": 7
-                },
-                {
-                    "type": "item",
-                    "id": "8"
-                },
-                {
-                    "type": "container",
-                    "id": "2",
-                    "columns": [
-                        [
-                            {
-                                "type": "item",
-                                "id": "9"
-                            },
-                            {
-                                "type": "item",
-                                "id": "10"
-                            },
-                            {
-                                "type": "item",
-                                "id": "11"
-                            }
-                        ],
-                        [
-                            {
-                                "type": "item",
-                                "id": "12"
-                            },
-                            {
-                                "type": "container",
-                                "id": "3",
-                                "columns": [
-                                    [
-                                        {
-                                            "type": "item",
-                                            "id": "13"
-                                        }
-                                    ],
-                                    [
-                                        {
-                                            "type": "item",
-                                            "id": "14"
-                                        }
-                                    ]
-                                ]
-                            },
-                            {
-                                "type": "item",
-                                "id": "15"
-                            },
-                            {
-                                "type": "item",
-                                "id": "16"
-                            }
-                        ]
-                    ]
-                },
-                {
-                    "type": "item",
-                    "id": 16
-                }
-            ]
-        };
+                    "label": "Item B3"
+                }]}
+    };
 
+    // Generate initial model
+    for (var i = 1; i <= 3; ++i) {
+        $scope.models.lists.A.push({label: "Item A" + i});
+        $scope.models.lists.B.push({label: "Item B" + i});
+    }
 
+    // Model to JSON for demo purpose
+    $scope.$watch('models', function(model) {
+        $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
 
-
-	
 	
 	$scope.getCustomerData = function() {
 	    	 // use $.param jQuery function to serialize data from JSON 
