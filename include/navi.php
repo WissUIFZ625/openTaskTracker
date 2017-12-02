@@ -27,7 +27,7 @@
     <div id="MainNavCon">
         <div class="logomainDiv"  onclick="document.getElementById('fav').style.display = 'none';">
 
-            <!---<div style="font-size: 208%;color: white;margin-top: 31px;margin-left: 18px;  font-family: Microsoft Sans Serif, sans-serif;">xaxada®</div>->
+            <!---<div style="font-size: 208%;color: white;margin-top: 31px;margin-left: 18px;  font-family: Microsoft Sans Serif, sans-serif;">openTaskTracker®</div>->
             <!--<img src="img/LOGO_PF.png" class="logomain">-->
         </div>
 
@@ -42,13 +42,13 @@
                     </div>-->
                 </div>
                 <div class="col-sm-2 dropdown topnavitem">
-                    <span style="color:white;" onclick="window.open('https://xaxada.com/de/support---contact.html', 'zweitfenster')">&Uuml;ber Uns</span>
+                    <span style="color:white;" onclick="window.open('https://openTaskTracker.com/de/support---contact.html', 'zweitfenster')">&Uuml;ber Uns</span>
 <!--                    <div class="dropdown-content">
                         <p>Dropdown2</p>
                     </div>-->
                 </div>
                 <div class="col-sm-2 dropdown topnavitem">
-                    <img class="col-sm-2 dropdown topnavitem" style="height: 63px; width: auto;  cursor:pointer;  margin-left: -20px; top: -19px;" src="img_inter/xaxada.png" onclick="window.open('http://www.xaxada.com', 'zweitfenster')">
+                    <img class="col-sm-2 dropdown topnavitem" style="height: 63px; width: auto;  cursor:pointer;  margin-left: -20px; top: -19px;" src="img_inter/openTaskTracker.png" onclick="window.open('http://www.openTaskTracker.com', 'zweitfenster')">
 <!--                    <div class="dropdown-content">
                         <p>Dropdown3</p>
                     </div>-->
@@ -77,8 +77,8 @@
                 </md-button>
             </md-dialog-actions>
             <md-dialog-actions>
-                <md-button class="useredit md-raised" onclick="location.href='connected_xaxada.php';">
-                    Xaxada Verwalten
+                <md-button class="useredit md-raised" onclick="location.href='connected_openTaskTracker.php';">
+                    openTaskTracker Verwalten
                 </md-button>
             </md-dialog-actions>
             <!--<img src="img/menulog.png" class="menubarminicon">-->

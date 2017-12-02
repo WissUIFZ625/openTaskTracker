@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76d64f90-ed72-44c2-bdd6-d874c0e8a24d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/handle_session.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/navi.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/process_register.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/utilities.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/include/validate.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/include/CustomerDataCollectionopenTaskTracker.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/js/ctrl/openTaskTrackerctrl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/js/openTaskTracker.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/include/pdoinit.php" afterPath="$PROJECT_DIR$/include/pdoinit.php" />
-      <change beforePath="$PROJECT_DIR$/include/permission_functions.php" afterPath="$PROJECT_DIR$/include/permission_functions.php" />
+      <change beforePath="$PROJECT_DIR$/include/handle_session.php" afterPath="$PROJECT_DIR$/include/handle_session.php" />
+      <change beforePath="$PROJECT_DIR$/include/navi.php" afterPath="$PROJECT_DIR$/include/navi.php" />
       <change beforePath="$PROJECT_DIR$/include/process_login.php" afterPath="$PROJECT_DIR$/include/process_login.php" />
-      <change beforePath="$PROJECT_DIR$/include/register.php" afterPath="" />
       <change beforePath="$PROJECT_DIR$/openTaskTracker.php" afterPath="$PROJECT_DIR$/openTaskTracker.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,38 +20,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="openTaskTracker.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="openTaskTracker.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openTaskTracker.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1240">
-              <caret line="34" column="118" lean-forward="false" selection-start-line="34" selection-start-column="118" selection-end-line="34" selection-end-column="118" />
+            <state relative-caret-position="960">
+              <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/navi.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1640">
-              <caret line="44" column="69" lean-forward="false" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="129" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process_login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/process_login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1280">
-              <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ie.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scss/ie.scss">
+      <file leaf-file-name="openTaskTracker.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/openTaskTracker.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -63,67 +40,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="print.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scss/print.scss">
+      <file leaf-file-name="openTaskTrackerctrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/ctrl/openTaskTrackerctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="200">
+              <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerDataCollection_inter.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../git_xaxada_int/xaxada/include_inter/CustomerDataCollection_inter.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-480">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="validate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/validate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process_register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/process_register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3920">
-              <caret line="98" column="77" lean-forward="false" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
               <folding>
-                <marker date="1511686543678" expanded="true" signature="1318:1426" ph="SELECT id, u... members" />
-                <marker date="1511686543678" expanded="true" signature="1610:1661" ph="SELECT id FR... members" />
-                <marker date="1511686543678" expanded="true" signature="2628:2773" ph="INSERT INTO members... " />
-                <marker date="1511686543678" expanded="true" signature="3592:3643" ph="SELECT id FR... members" />
+                <marker date="1512030205783" expanded="true" signature="2863:3406" ph="SELECT custo... customer" />
+                <marker date="1512030205783" expanded="true" signature="4027:4711" ph="SELECT custo... customer" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pdoinit.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/include/pdoinit.php">
+      <file leaf-file-name="CustomerDataCollectionopenTaskTracker.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/CustomerDataCollectionopenTaskTracker.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-              <folding />
+            <state relative-caret-position="600">
+              <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding>
+                <marker date="1512202895665" expanded="true" signature="2863:3406" ph="SELECT custo... customer" />
+                <marker date="1512202895665" expanded="true" signature="4027:4711" ph="SELECT custo... customer" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,14 +85,16 @@
       <find>_inter</find>
       <find>practiframe</find>
       <find>opentask</find>
+      <find>xaxada</find>
     </findStrings>
     <replaceStrings>
       <replace>inputsregister</replace>
       <replace>openTaskTracker</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>C:\xampp\htdocs\openTaskTracker\include</dir>
       <dir>C:\xampp\htdocs\openTaskTracker</dir>
+      <dir>C:\xampp\htdocs\openTaskTracker\js</dir>
+      <dir>C:\xampp\htdocs\openTaskTracker\include</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -163,8 +113,10 @@
         <option value="$PROJECT_DIR$/include/process_register.php" />
         <option value="$PROJECT_DIR$/include/process_login.php" />
         <option value="$PROJECT_DIR$/include/navi.php" />
-        <option value="$PROJECT_DIR$/openTaskTracker.php" />
         <option value="$PROJECT_DIR$/include/pdoinit.php" />
+        <option value="$PROJECT_DIR$/include/CustomerDataCollectionopenTaskTracker.php" />
+        <option value="$PROJECT_DIR$/js/ctrl/openTaskTrackerctrl.js" />
+        <option value="$PROJECT_DIR$/openTaskTracker.php" />
       </list>
     </option>
   </component>
@@ -210,6 +162,17 @@
               <item name="openTaskTracker" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="include" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="openTaskTracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openTaskTracker" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="openTaskTracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openTaskTracker" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ctrl" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -219,6 +182,13 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\openTaskTracker\include" />
+      <recent name="C:\xampp\htdocs\openTaskTracker\js\ctrl" />
+      <recent name="C:\xampp\htdocs\openTaskTracker\js" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -254,12 +224,12 @@
       <workItem from="1511686278704" duration="305000" />
       <workItem from="1511686605588" duration="1238000" />
       <workItem from="1512200428423" duration="308000" />
-      <workItem from="1512200756713" duration="308000" />
+      <workItem from="1512200756713" duration="2403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13467000" />
+    <option name="totallyTimeSpent" value="15562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -270,6 +240,7 @@
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21342134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -282,7 +253,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42248908" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -305,36 +275,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="51" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="39" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openTaskTracker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="51" lean-forward="false" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/process_login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -592,6 +532,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10000">
           <caret line="250" column="16" lean-forward="false" selection-start-line="250" selection-start-column="16" selection-end-line="250" selection-end-column="16" />
+          <folding>
+            <marker date="1511686543650" expanded="true" signature="421:482" ph="SELECT id, u... members" />
+            <marker date="1511686543650" expanded="true" signature="798:882" ph="SELECT first... members" />
+            <marker date="1511686543650" expanded="true" signature="1235:1323" ph="SELECT first... members" />
+            <marker date="1511686543650" expanded="true" signature="1985:2063" ph="SELECT COUNT... user_custom_setting" />
+            <marker date="1511686543650" expanded="true" signature="2269:2371" ph="UPDATE user_... " />
+            <marker date="1511686543650" expanded="true" signature="2385:2490" ph="INSERT INTO user_custom_setting" />
+            <marker date="1511686543650" expanded="true" signature="3041:3173" ph="SELECT ug.gr... user_group" />
+            <marker date="1511686543650" expanded="true" signature="3340:3362" ph="SELECT * fro... location" />
+            <marker date="1511686543650" expanded="true" signature="3463:3500" ph="SELECT * fro... rights_level_permission" />
+            <marker date="1511686543650" expanded="true" signature="6303:6325" ph="SELECT * fro... location" />
+            <marker date="1511686543650" expanded="true" signature="6502:6699" ph="SELECT ucs.l... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -619,15 +572,7 @@
     <entry file="file://$PROJECT_DIR$/include/navi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1640">
-          <caret line="44" column="69" lean-forward="false" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="129" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openTaskTracker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="34" column="118" lean-forward="false" selection-start-line="34" selection-start-column="118" selection-end-line="34" selection-end-column="118" />
+          <caret line="44" column="69" lean-forward="false" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="138" />
           <folding />
         </state>
       </provider>
@@ -674,8 +619,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/pdoinit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+        <state relative-caret-position="1040">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CustomerDataCollectionopenTaskTracker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <marker date="1512202895665" expanded="true" signature="2863:3406" ph="SELECT custo... customer" />
+            <marker date="1512202895665" expanded="true" signature="4027:4711" ph="SELECT custo... customer" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/openTaskTracker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ctrl/openTaskTrackerctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../git_xaxada_int/xaxada/include_inter/CustomerDataCollection_inter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1512030205783" expanded="true" signature="2863:3406" ph="SELECT custo... customer" />
+            <marker date="1512030205783" expanded="true" signature="4027:4711" ph="SELECT custo... customer" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openTaskTracker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
           <folding />
         </state>
       </provider>

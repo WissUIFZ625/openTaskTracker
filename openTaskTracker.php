@@ -11,7 +11,7 @@ sec_session_start();
 <html lang="de" ng-app="cockpit_interApp" class="responsivelayout">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Xaxada Online</title>
+    <title>openTaskTracker Online</title>
     <link rel="stylesheet" href="css/screen.min.css"/>
     <link rel="stylesheet" href="css_inter/style.css"/>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -51,11 +51,11 @@ sec_session_start();
     <link rel="stylesheet" type="text/css" href="css_inter/customer_cockpit_inter.css">
     <!--<script src="js_inter/configuration.js"></script>-->
 
-    <script src="js_inter/cockpit_inter.js"></script>
-    <script src="js_inter/ctrl/cockpit_interctrl.js"></script>
+    <script src="js/openTaskTracker.js.js"></script>
+    <script src="js/ctrl/openTaskTrackerctrl.js"></script>
 
 </head>
-<body id="atmosphere-responsive" class="js notouch loaded" ng-controller="cockpit_interCtrl">
+<body id="atmosphere-responsive" class="js notouch loaded" ng-controller="openTaskTracker_Ctrl">
 <?php //require_once 'include/navi.php';?>
 <h1>Hallo du bist eingeloggt. Hier entsteht unser Tracker</h1>
 

@@ -24,7 +24,7 @@ if (isset($_POST['email'], $_POST['p'])) {
 
             if($firstLogincheck){
 
-                header("Location: ../connectxaxada.php");  //../connect ist korrekt !!!!!!!!!!!!
+                header("Location: ../connectopenTaskTracker.php");  //../connect ist korrekt !!!!!!!!!!!!
                 exit();
 
             }else{

@@ -17,7 +17,7 @@ class SecureSessionHandler extends SessionHandler /*implements SessionHandlerInt
 	const SESSION_ENCRYPT_LIB='openssl';
 	const SESSION_ENCRYPT_ALGO='aes-256-ctr';
 	const HASHING_ALGO='sha512';
-	const SESSION_NAME='my_xaxada_session';
+	const SESSION_NAME='my_openTaskTracker_session';
 	const SESSION_TTL=30;//In Minutes
 	const FINGERPRINT_CONTAINS_IP=true;
 	const FINGERPRINT_CONTAINS_SALT=true;
