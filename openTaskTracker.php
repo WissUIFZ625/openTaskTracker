@@ -53,6 +53,8 @@ sec_session_start();
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
+
+
         </div>
     </md-toolbar>
 
@@ -66,7 +68,7 @@ sec_session_start();
          transfer the object that was assigned to it. If an element was
          dragged away, you have to remove it from the original list
          yourself using the dnd-moved attribute -->
-    <li ng-repeat="item in list"
+    <li ng-repeat="item in model.lists"
         dnd-draggable="item"
         dnd-moved="list.splice($index, 1)"
         dnd-effect-allowed="move"

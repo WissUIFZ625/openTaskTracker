@@ -236,3 +236,7 @@ body {
 .error {
   color: red;
 }
+
+.logout {
+  right: 20px;
+}

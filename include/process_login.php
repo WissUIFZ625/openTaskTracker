@@ -29,7 +29,7 @@ if (isset($_POST['nickname'], $_POST['p'])) {
 
     } else {
         // Login failed 
-        header('Location: ../index.php?error=1');
+        header('Location: ../login.php?error=1');
         exit();
     }
 } else {

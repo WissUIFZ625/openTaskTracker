@@ -10,7 +10,7 @@ sec_session_start();
 $con = new connect_pdo();
 $pdo = $con->dbh();
 
-$error_msg ='';
+$error_msg = '';
 
 
 ?>
@@ -32,8 +32,14 @@ $error_msg ='';
 <?php
 if (isset($_GET["reg_suc"]) && !empty($_GET["reg_suc"])) {
     if ($_GET["reg_suc"] == 1) {
-        $error_msg=  '<span>Registrierung erfolgreich</span><br>'.'<span>Loggen Sie sich ein.</span>';
+        $error_msg = '<span>Registrierung erfolgreich</span><br>' . '<span>Loggen Sie sich ein.</span>';
     }
+} elseif (isset($_GET["error"]) && !empty($_GET["error"])) {
+    if ($_GET["error"] == 1) {
+        $error_msg = '<span>Login fehlerhaft</span><br>';
+    }
+    
+
 }
 
 
