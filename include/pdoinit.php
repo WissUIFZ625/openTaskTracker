@@ -38,12 +38,12 @@ class connect_pdo
 {
 	protected $con;
         private   $db_host="localhost";
-        private   $db_name="relay";
+        private   $db_name="ott";
 
         //private   $db_user="root";
        // private   $user_pw="";
-        private   $db_user="benutzername";
-        private   $user_pw="pw";
+        private   $db_user="root";
+        private   $user_pw="";
 
 
         public function __construct(){

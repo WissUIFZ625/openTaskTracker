@@ -43,18 +43,8 @@ if (isset($_GET['error'])) {
 
 <div class="login">
 
-    <?php
-
-    if (isset($_GET["pw_cha"]) && !empty($_GET["pw_cha"])) {
-        if ($_GET["pw_cha"] == 1) {
-            echo '<span>Passwort wurde erfolgreich geändert</span><br>';
-        }
-    }
-
-
-    ?>
     <form action="include/process_login.php" method="post" name="login_form">
-        <input type="text" placeholder="E-Mail" name="email"/><br>
+        <input type="text" placeholder="Nickname" name="nickname"/><br>
         <input type="password"
                name="password"
                placeholder="Password"
