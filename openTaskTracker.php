@@ -66,15 +66,32 @@ sec_session_start();
     </md-content>
 </div>
 
+<div>
+    <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
+    <md-button class="md-raised md-primary" ng-click="showNewTaskDialog()">New Task</md-button>
+    <md-button class="md-raised md-warn" ng-click="showNewProjectDialog()">New Projekt</md-button>
+</div>
+
 
 
 
 <div>
-    <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
-    <md-button class="md-raised" ng-click="showNewTaskDialog()">New Task</md-button>
-    <md-button class="md-raised" ng-click="showNewProjectDialog()">New Projekt</md-button>
-    </div>
-
+    <md-subheader class="md-no-sticky">Set your Filter's</md-subheader>
+</div>
+<div>
+    <md-input-container md-no-float>
+        <input type="text" placeholder="Filter 1">
+    </md-input-container>
+    <md-input-container md-no-float>
+        <input type="text" placeholder="Filter 2">
+    </md-input-container>
+    <md-input-container md-no-float>
+        <input type="text" placeholder="Filter 3">
+    </md-input-container>
+    <md-input-container md-no-float>
+        <input type="text" placeholder="Filter 4">
+    </md-input-container>
+</div>
 
 <div class="simpleDemo row">
     <div class="col-md-12">
@@ -89,7 +106,6 @@ sec_session_start();
                 </div>
             </div>
         </div>
-
 
         <div view-source="simple">
 
