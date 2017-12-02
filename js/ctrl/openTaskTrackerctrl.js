@@ -118,6 +118,15 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         });
     };
 
+    $scope.showNewTaskDialog = function () {
+        $mdDialog.show({
+            contentElement: '#newProject',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            escapeToClose: true
+        });
+    };
+
     $scope.showChangeEmailDialog = function () {
         $mdDialog.show({
             contentElement: '#change_email_address_inter',

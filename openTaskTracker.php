@@ -81,7 +81,7 @@ sec_session_start();
 
 <div>
     <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
-    <md-button class="md-raised">New Task</md-button>
+    <md-button class="md-raised" ng-click="showNewTaskDialog()">New Task</md-button>
     <md-button class="md-raised" ng-click="showNewProjectDialog()">New Projekt</md-button>
     </div>
 
