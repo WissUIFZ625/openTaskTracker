@@ -3,9 +3,8 @@ var openTaskTracker_App = angular.module('openTaskTracker_App', ['ngMaterial']);
 
 var mytimer;
 
-openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog)
-{
-	$scope.customerdata =
+openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog) {
+    $scope.customerdata =
         {
             "A": [
                 {
@@ -112,43 +111,38 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         };
 
 
+    $scope.getCustomerData = function () {
+        // use $.param jQuery function to serialize data from JSON
+        var data = $.param({
+            target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
+            filter_str: flt
+        });
+
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        $http.post('ajax_inter/getjsondata_inter.php', data, config)
+            .success(function (response, status, headers, config) {
+
+                $scope.customerdata = response.customerdata;
+                //$scope.$apply(function ()
+                //{
+                //////////$scope.shh_maildata = response.shh_maildata;
+                //});
+
+            })
+            .error(function (data, status, header, config) {
+                //alert(data);
+            });
+    };
 
 
-	
-	
-	$scope.getCustomerData = function() {
-	    	 // use $.param jQuery function to serialize data from JSON 
-	         var data = $.param({
-				 target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
-	             filter_str: flt
-	         });
-	     
-	         var config = {
-	             headers : {
-	                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-	             }
-	         };
-
-	         $http.post('ajax_inter/getjsondata_inter.php', data, config)
-	         .success(function (response, status, headers, config) {
-
-			 $scope.customerdata = response.customerdata;
-				//$scope.$apply(function ()
-				//{
-					//////////$scope.shh_maildata = response.shh_maildata;
-				//});
-				 
-	         })
-	         .error(function (data, status, header, config) {
-	        //alert(data);
-	         });
-	};
-	
-	
-	$scope.closeDialog = function()
-	{
-		$mdDialog.hide();
-	};
+    $scope.closeDialog = function () {
+        $mdDialog.hide();
+    };
 
     $scope.showChangeAdminPWDialog = function () {
         $mdDialog.show({
@@ -167,40 +161,38 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             escapeToClose: true
         });
     };
-	
-	$scope.showNoPIHashAlert = function(ev) {
-		// Appending dialog to document.body to cover sidenav in docs app
-		// Modal dialogs should fully cover application
-		// to prevent interaction outside of dialog
-		$mdDialog.show(
-		  $mdDialog.alert()
-			.parent(angular.element(document.querySelector('#document.body')))
-			.clickOutsideToClose(true)
-			.title('Kein Identifikationscode')
-			.textContent('Kein lokaler Identifikationscode gefunden')
-			.ariaLabel('Alert Kein Identifikationscode')
-			.ok('OK')
-			.targetEvent(ev)
-		);
-	  };
-	
-	
-	$scope.showNotLogedInAlertDlg = function() {
-		$mdDialog.show({
-		  contentElement: '#alertNotLogedInDialog',
-		  parent: angular.element(document.body),
-		  clickOutsideToClose:false,
-		  escapeToClose: false
-		});
-	};
+
+    $scope.showNoPIHashAlert = function (ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        // Modal dialogs should fully cover application
+        // to prevent interaction outside of dialog
+        $mdDialog.show(
+            $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#document.body')))
+                .clickOutsideToClose(true)
+                .title('Kein Identifikationscode')
+                .textContent('Kein lokaler Identifikationscode gefunden')
+                .ariaLabel('Alert Kein Identifikationscode')
+                .ok('OK')
+                .targetEvent(ev)
+        );
+    };
 
 
-    $scope.chk_hash_redirect = function (hashcode)
-    {
-	var url= hashcode;
+    $scope.showNotLogedInAlertDlg = function () {
+        $mdDialog.show({
+            contentElement: '#alertNotLogedInDialog',
+            parent: angular.element(document.body),
+            clickOutsideToClose: false,
+            escapeToClose: false
+        });
+    };
 
-        if($scope.customerdata.ident.identify_hash !== -1 && $scope.customerdata.ident.identify_hash !== null && typeof $scope.customerdata.ident.identify_hash != 'undefined')
-        {
+
+    $scope.chk_hash_redirect = function (hashcode) {
+        var url = hashcode;
+
+        if ($scope.customerdata.ident.identify_hash !== -1 && $scope.customerdata.ident.identify_hash !== null && typeof $scope.customerdata.ident.identify_hash != 'undefined') {
 
             $.ajax({
                 type: 'POST',
@@ -208,41 +200,37 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 data: {
                     idhash: $scope.customerdata.ident.identify_hash[0]
                 },
-                success: function(data){
+                success: function (data) {
 
                 },
-                error: function(xhr, textStatus, error){
+                error: function (xhr, textStatus, error) {
                     console.log(xhr.statusText);
                     console.log(textStatus);
                     console.log(error);
                 }
 
-            }).done(function(result)
-            {
-                if(result ==='true')
-                {
+            }).done(function (result) {
+                if (result === 'true') {
                     //scopetmp.customerdata.ident_hash=result;
 
                     $.ajax({
                         type: 'POST',
                         url: 'ajax_inter/destroy_session.php',
-                        data: {
-                        },
-                        success: function(data){
+                        data: {},
+                        success: function (data) {
 
                         },
-                        error: function(xhr, textStatus, error){
+                        error: function (xhr, textStatus, error) {
                             console.log(xhr.statusText);
                             console.log(textStatus);
                             console.log(error);
                         }
 
-                    }).done(function(result)
-                    {
+                    }).done(function (result) {
                         //if(result ==='true')
                         //{
                         //scopetmp.customerdata.ident_hash=result;
-                        window.location.href =url/*+'?pi_id_hash='/$scope.customerdata.ident.identify_hash*/;
+                        window.location.href = url/*+'?pi_id_hash='/$scope.customerdata.ident.identify_hash*/;
                         /*window.open (url)/!*+'?pi_id_hash='/$scope.customerdata.ident.identify_hash*!/;*/
                         //}
                         //else
@@ -255,8 +243,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
                     //window.location.href =url+'?pi_id_hash='+scopetmp.customerdata.ident_hash;
                 }
-                else
-                {
+                else {
                     $scope.showNoPIHashAlert();
                 }
                 //scopetmp.customerdata.ident_hash=result;
@@ -264,17 +251,13 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             });
 
 
-
-
             //window.location.href =url+'?pi_id_hash='+scopetmp.customerdata.ident_hash;
         }
-        else
-        {
+        else {
             $scope.showNoPIHashAlert();
         }
     };
-    $scope.send_mail_again = function (hashcode)
-    {
+    $scope.send_mail_again = function (hashcode) {
         var confirm = $mdDialog.confirm()
             .title('Keine E-Mail erhalten')
             .textContent('Wollen Sie sich erneut eine E-Mail zustellen?')
@@ -283,52 +266,51 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             .ok('Ja')
             .cancel('Nein');
 
-        $mdDialog.show(confirm).then(function(){
-    	var hashformail = hashcode;
+        $mdDialog.show(confirm).then(function () {
+            var hashformail = hashcode;
 
-        $.ajax({
-            type: 'POST',
-            url: 'ajax_inter/send_dbvali_mail_inter_again.php',
-            data: {
-                ident_hash:hashformail
-            },
-            success: function(data){
+            $.ajax({
+                type: 'POST',
+                url: 'ajax_inter/send_dbvali_mail_inter_again.php',
+                data: {
+                    ident_hash: hashformail
+                },
+                success: function (data) {
 
-            },
-            error: function(xhr, textStatus, error){
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
-            }
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                }
 
-        }).done(function(result)
-        {
-            //$scope.customerdata.ident_hash=result;
-            //alert(result);
-            flt = new Object();
-            //flt.ssh_id=id;
-            //flt.ssh_id=scopetmp.clicked_share_id;
-            flt.outtype='json';
-            flt.filtertype='email';
-            $scope.getCustomerData();
-
-            mytimer = setInterval(function(){
+            }).done(function (result) {
+                //$scope.customerdata.ident_hash=result;
+                //alert(result);
                 flt = new Object();
                 //flt.ssh_id=id;
                 //flt.ssh_id=scopetmp.clicked_share_id;
-                flt.outtype='json';
-                flt.filtertype='email';
-                scopetmp.getCustomerData();}, 1000);
-        });
-        }, function() {
+                flt.outtype = 'json';
+                flt.filtertype = 'email';
+                $scope.getCustomerData();
+
+                mytimer = setInterval(function () {
+                    flt = new Object();
+                    //flt.ssh_id=id;
+                    //flt.ssh_id=scopetmp.clicked_share_id;
+                    flt.outtype = 'json';
+                    flt.filtertype = 'email';
+                    scopetmp.getCustomerData();
+                }, 1000);
+            });
+        }, function () {
 
 
         });
 
-	};
+    };
 
-    $scope.clear_device_dlg = function (hashcode)
-    {
+    $scope.clear_device_dlg = function (hashcode) {
         var confirm = $mdDialog.confirm()
             .title('Wollen Sie Ihr Gerät wirklich entfernen?')
             .textContent('Wenn Sie dies bestätigen, haben Sie keinen Zugriff mehr zum internationalen Schalten')
@@ -337,46 +319,45 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             .ok('OK')
             .cancel('Abbrechen');
 
-        $mdDialog.show(confirm).then(function(){
+        $mdDialog.show(confirm).then(function () {
 
             var hashformail = hashcode;
             $.ajax({
                 type: 'POST',
                 url: 'ajax_inter/clear_device_inter.php',
                 data: {
-                    ident_hash:hashformail
+                    ident_hash: hashformail
                 },
-                success: function(data){
+                success: function (data) {
 
                 },
-                error: function(xhr, textStatus, error){
+                error: function (xhr, textStatus, error) {
                     console.log(xhr.statusText);
                     console.log(textStatus);
                     console.log(error);
                 }
 
-            }).done(function(result)
-            {
+            }).done(function (result) {
                 //$scope.customerdata.ident_hash=result;
                 //alert(result);
                 flt = new Object();
                 //flt.ssh_id=id;
                 //flt.ssh_id=scopetmp.clicked_share_id;
-                flt.outtype='json';
-                flt.filtertype='email';
+                flt.outtype = 'json';
+                flt.filtertype = 'email';
                 $scope.getCustomerData();
             });
-        }, function() {
+        }, function () {
 
 
         });
 
     };
     $scope.test = function () {
-      alert("Work in Progress");
+        alert("Work in Progress");
     }
 
-    $scope.send_idhash_cmail =function () {
+    $scope.send_idhash_cmail = function () {
 
         $mdDialog.show(
             $mdDialog.alert()
@@ -385,8 +366,8 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .clickOutsideToClose(true)
                 .title('E-Mail Bestätigen')
                 .textContent('Es wurde eine E-Mail an die registrierte Adresse zugestellt.' +
-                                '\r\nDas versenden der E-Mail kann je nach Mailserver bis zu 5 Minuten dauern.' +
-                                '\r\nÜberprüfen Sie auch Ihren Spam und Junk Mail Ordner.')
+                    '\r\nDas versenden der E-Mail kann je nach Mailserver bis zu 5 Minuten dauern.' +
+                    '\r\nÜberprüfen Sie auch Ihren Spam und Junk Mail Ordner.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
         );
@@ -395,41 +376,40 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             type: 'POST',
             url: 'ajax_inter/send_dbvali_mail_inter.php',
             data: {
-                ident_hash:$scope.new_ident_hash
+                ident_hash: $scope.new_ident_hash
             },
-            success: function(data){
+            success: function (data) {
 
             },
-            error: function(xhr, textStatus, error){
+            error: function (xhr, textStatus, error) {
                 console.log(xhr.statusText);
                 console.log(textStatus);
                 console.log(error);
             }
 
-        }).done(function(result)
-        {
+        }).done(function (result) {
             //$scope.customerdata.ident_hash=result;
             //alert(result);
             flt = new Object();
             //flt.ssh_id=id;
             //flt.ssh_id=scopetmp.clicked_share_id;
-            flt.outtype='json';
-            flt.filtertype='email';
+            flt.outtype = 'json';
+            flt.filtertype = 'email';
             $scope.getCustomerData();
-            $scope.new_ident_hash="";
+            $scope.new_ident_hash = "";
 
-            mytimer = setInterval(function(){
+            mytimer = setInterval(function () {
                 flt = new Object();
                 //flt.ssh_id=id;
                 //flt.ssh_id=scopetmp.clicked_share_id;
-                flt.outtype='json';
-                flt.filtertype='email';
-                scopetmp.getCustomerData();}, 1000);
+                flt.outtype = 'json';
+                flt.filtertype = 'email';
+                scopetmp.getCustomerData();
+            }, 1000);
 
         });
     }
-    $scope.update_option_device = function (hashcode, name, ort, select_land)
-    {
+    $scope.update_option_device = function (hashcode, name, ort, select_land) {
         var confirm = $mdDialog.confirm()
             .title('Wollen Sie die Änderungen speichern?')
             .textContent('Der Name wird Ihnen später beim internationalen Schalten angezeigt.')
@@ -438,7 +418,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             .ok('OK')
             .cancel('Abbrechen');
 
-        $mdDialog.show(confirm).then(function(){
+        $mdDialog.show(confirm).then(function () {
 
             var hashformail = hashcode;
             var namerp = name;
@@ -448,39 +428,37 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 type: 'POST',
                 url: 'ajax_inter/update_option_devices_inter.php',
                 data: {
-                    ident_hash:hashformail,
-                    land:land,
-                    standort:standort,
-                    namerp:namerp
+                    ident_hash: hashformail,
+                    land: land,
+                    standort: standort,
+                    namerp: namerp
                 },
-                success: function(data){
+                success: function (data) {
 
                 },
-                error: function(xhr, textStatus, error){
+                error: function (xhr, textStatus, error) {
                     console.log(xhr.statusText);
                     console.log(textStatus);
                     console.log(error);
                 }
 
-            }).done(function(result)
-            {
+            }).done(function (result) {
                 //$scope.customerdata.ident_hash=result;
                 //alert(result);
                 flt = new Object();
                 //flt.ssh_id=id;
                 //flt.ssh_id=scopetmp.clicked_share_id;
-                flt.outtype='json';
-                flt.filtertype='email';
+                flt.outtype = 'json';
+                flt.filtertype = 'email';
                 $scope.getCustomerData();
             });
-        }, function() {
+        }, function () {
 
 
         });
 
     };
-    $scope.update_userdata = function (name_u,surname_u,email_u,adress_u,plz_u,city_u,tel_u)
-    {
+    $scope.update_userdata = function (name_u, surname_u, email_u, adress_u, plz_u, city_u, tel_u) {
         var confirm = $mdDialog.confirm()
             .title('Wollen Sie die geänderten Userdaten speichern?')
             .textContent('Die E-Mail Adresse können Sie zur Zeit nicht ändern.')
@@ -489,7 +467,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             .ok('OK')
             .cancel('Abbrechen');
 
-        $mdDialog.show(confirm).then(function(){
+        $mdDialog.show(confirm).then(function () {
 
             var name = name_u;
             var surname = surname_u;
@@ -502,35 +480,34 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 type: 'POST',
                 url: 'ajax_inter/update_userdata_inter.php',
                 data: {
-                    name:name,
-                    surname:surname,
-                    email:email,
-                    adresse:adresse,
-                    plz:plz,
-                    city:city,
-                    telephone:telefon,
+                    name: name,
+                    surname: surname,
+                    email: email,
+                    adresse: adresse,
+                    plz: plz,
+                    city: city,
+                    telephone: telefon,
                 },
-                success: function(data){
+                success: function (data) {
 
                 },
-                error: function(xhr, textStatus, error){
+                error: function (xhr, textStatus, error) {
                     console.log(xhr.statusText);
                     console.log(textStatus);
                     console.log(error);
                 }
 
-            }).done(function(result)
-            {
+            }).done(function (result) {
                 //$scope.customerdata.ident_hash=result;
                 //alert(result);
                 flt = new Object();
                 //flt.ssh_id=id;
                 //flt.ssh_id=scopetmp.clicked_share_id;
-                flt.outtype='json';
-                flt.filtertype='email';
+                flt.outtype = 'json';
+                flt.filtertype = 'email';
                 $scope.getCustomerData();
             });
-        }, function() {
+        }, function () {
 
 
         });
@@ -539,20 +516,19 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
     $scope.clear_Interval_Time = function (hashcode) {
 
-        if(hashcode == null){
+        if (hashcode == null) {
             return true
-        }else{
+        } else {
             clearInterval(mytimer);
             return true;
         }
     };
 
 
-
     $scope.insert_hash_from_clipboard = function () {
 
         //$scope.new_ident_hash="";
-       myeditor = new Object();
+        myeditor = new Object();
         myeditor = document.getElementById("new_ident_hash");
         myeditor.focus();
         //editor.select();
@@ -572,7 +548,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Bitte klicken Sie auf den orangen Button.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('Los gehts')
-
         );
     };
 
@@ -585,7 +560,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Sie werden in Kürze ausgeloggt!')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 
@@ -598,7 +572,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Ihr altes Passwort stimmt nicht überein.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 
@@ -611,7 +584,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Es ist ein Fehler aufgetreten.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 
@@ -624,7 +596,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Sie können kein leeres Passwort speichern.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 
@@ -637,7 +608,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Es ist keine neue E-Mailadresse eingetragen.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 
@@ -650,7 +620,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('E-Mailadressen sind nicht identisch.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 
@@ -663,7 +632,6 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .textContent('Bestätigen Sie diese E-Mail indem Sie dem Link folgen. Sie werden in kürze  ausgeloggt.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('OK')
-
         );
     };
 });

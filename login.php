@@ -10,6 +10,8 @@ sec_session_start();
 $con = new connect_pdo();
 $pdo = $con->dbh();
 
+$error_msg ='';
+
 
 ?>
 <!DOCTYPE html>
@@ -28,20 +30,29 @@ $pdo = $con->dbh();
 
 
 <?php
-if (isset($_GET['error'])) {
-    echo '<p class="error">Error Logging In!</p>';
+if (isset($_GET["reg_suc"]) && !empty($_GET["reg_suc"])) {
+    if ($_GET["reg_suc"] == 1) {
+        $error_msg=  '<span>Registrierung erfolgreich</span><br>'.'<span>Loggen Sie sich ein.</span>';
+    }
 }
+
+
 ?>
 <div class="body"></div>
 <div class="grad"></div>
 <div class="header">
 
-    <div >openTask<span></span></div>
-    <p><div class=""><span>Tracker</span></div></p>
+    <div>openTask<span></span></div>
+    <p>
+    <div class=""><span>Tracker</span></div>
+    </p>
+</div>
+<div class="errmsg">
+    <?php echo $error_msg ?>
 </div>
 
-
 <div class="login">
+
 
     <form action="include/process_login.php" method="post" name="login_form">
         <input type="text" placeholder="Nickname" name="nickname"/><br>

@@ -12,18 +12,18 @@ $pdo = $con->dbh();
 $error_msg = "";
 
 
-if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
+if (isset($_POST['username'], $_POST['p'])) {
     $first_usrtabl_stat = false;
     if (!inital_usr_exists($pdo)) {
         $first_usrtabl_stat = true;
     }
     // Sanitize and validate the data passed in
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+
+    if (!filter_var($username, FILTER_SANITIZE_STRING)) {
         // Not a valid email
-        $error_msg .= '<p class="error">Die von Ihnen eingegebene E-Mail-Adresse ist ungültig</p>';
+        $error_msg .= '<p class="error">Der eingegebene  Benutzername ist ungültig</p>';
     }
 
     $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
@@ -34,23 +34,23 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     }
     if ($stmt = $pdo->prepare
     (
-        "SELECT id, username, password, salt, deactivatedon 
-			FROM members
-            WHERE email = :EMAIL LIMIT 1"
+        "SELECT usr_id, usr_name, usr_password, usr_salt, usr_aut_id
+			FROM user
+            WHERE usr_name = :USER LIMIT 1"
     )
     ) {
-        $stmt->bindParam(':EMAIL', $email);
+        $stmt->bindParam(':USER', $username);
         $stmt->execute();
         $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
-        $prep_stmt = "SELECT id FROM members WHERE email = :EMAIL LIMIT 1";
+        $prep_stmt = "SELECT usr_id FROM user WHERE usr_name = :USER LIMIT 1";
         $stmt = $pdo->prepare($prep_stmt);
         if ($stmt) {
-            $stmt->bindParam(':EMAIL', $email);
+            $stmt->bindParam(':USER', $username);
             $stmt->execute();
             $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($dbresult !== false) {
                 // A user with this email address already exists
-                $error_msg .= '<p class="error">Ein Benutzer mit dieser E-Mail-Adresse ist bereits vorhanden.</p>';
+                $error_msg .= '<p class="error">Ein Benutzer mit diesem Username ist bereits vorhanden.</p>';
             }
         } else {
             $error_msg .= '<p class="error">Database error</p>';
@@ -63,22 +63,20 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
             $password = hash('sha512', $password . $random_salt);
 
             // Insert the new user into the database
-            if ($insert_stmt = $pdo->prepare("INSERT INTO members (username, isBatman, email, password, salt, first_login) VALUES (:USERNAME, :ISBATMAN ,:EMAIL, :PASSWORD, :SALT, :FIRSTLOGIN)")) {
+            if ($insert_stmt = $pdo->prepare("INSERT INTO user (usr_name, usr_password, usr_salt) VALUES (:USERNAME, :PASSWORD , :SALT)")) {
                 $isBatman = 1;
                 $insert_stmt->bindParam(':USERNAME', $username);
-                $insert_stmt->bindParam(':ISBATMAN', $isBatman);
-                $insert_stmt->bindParam(':EMAIL', $email);
                 $insert_stmt->bindParam(':PASSWORD', $password);
                 $insert_stmt->bindParam(':SALT', $random_salt);
-                $insert_stmt->bindParam(':FIRSTLOGIN', $isBatman);
+
                 // Execute the prepared query.
                 if (!$insert_stmt->execute()) {
                     header('Location: error.php?err=Registration failure: INSERT');
                     exit();
                 } else {
-                    header('Location: register_success.php');
-                    if ($stmt = $pdo->prepare("SELECT id FROM members WHERE email = :EMAIL LIMIT 1")) {
-                        $stmt->bindParam(':EMAIL', $email);
+                    header('Location: login.php?reg_suc=1');
+                    if ($stmt = $pdo->prepare("SELECT usr_id FROM user WHERE user = :USER LIMIT 1")) {
+                        $stmt->bindParam(':USER', $username);
                         if ($stmt->execute()) //if(!$stmt->execute())
                         {
                             $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -111,7 +109,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
                                                 if (add_groupperm_to_room($pdo, $admin_groupid, 0, 2)) //wird zu oft angesteuert-->Immer noch?
                                                 {
                                                     //return true;
-                                                    header('Location: register_success.php');
+                                                    header('Location: login.php?reg_suc=1');
                                                     exit();
                                                 } else {
                                                     //return false;

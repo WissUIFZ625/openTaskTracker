@@ -36,30 +36,16 @@ sec_session_start();
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-
     <link href="bower_components/hover/css/hover-min.css" rel="stylesheet" media="all">
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
 
 
-
     <script src="js/openTaskTracker.js"></script>
     <script src="js/ctrl/openTaskTrackerctrl.js"></script>
-    <script type="text/ng-template" id="list.html">
-        <ul dnd-list="list">
-            <li ng-repeat="item in list"
-                dnd-draggable="item"
-                dnd-effect-allowed="move"
-                dnd-moved="list.splice($index, 1)"
-                dnd-selected="models.selected = item"
-                ng-class="{selected: models.selected === item}"
-                ng-include="item.type + '.html'">
-            </li>
-        </ul>
-    </script>
+
 
 </head>
 <body id="atmosphere-responsive" class="js notouch loaded" ng-controller="openTaskTracker_Ctrl">
-
 
 
 <div>
@@ -71,10 +57,26 @@ sec_session_start();
             <md-truncate>Task</md-truncate>
         </div>
     </md-toolbar>
-        <md-content class="customcoumn" layout-gt-md="row" layout-padding>
-        </md-content>
-    </div>
+    <md-content class="customcoumn" layout-gt-md="row" layout-padding>
+    </md-content>
+</div>
 
+
+<ul dnd-list="list">
+    <!-- The dnd-draggable directive makes an element draggable and will
+         transfer the object that was assigned to it. If an element was
+         dragged away, you have to remove it from the original list
+         yourself using the dnd-moved attribute -->
+    <li ng-repeat="item in list"
+        dnd-draggable="item"
+        dnd-moved="list.splice($index, 1)"
+        dnd-effect-allowed="move"
+        dnd-selected="models.selected = item"
+        ng-class="{'selected': models.selected === item}"
+    >
+        {{item.label}}
+    </li>
+</ul>
 
 
 </body>

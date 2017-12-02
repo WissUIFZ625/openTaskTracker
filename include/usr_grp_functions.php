@@ -40,7 +40,7 @@ function grp_is_usrgrp($mysqlcon, $grp_id) //I.O. // Ist nur nötig, wenn Gruppe
 
 function show_usrs($mysqlcon, $fetchmode = NULL) //NULL wird zu "0"-->PDO::FETCH_BOTH (Ist default), "1"--> Nummeric Array, "2"-->Associative Array //I.O.
 {
-	$stmt = $mysqlcon->prepare("SELECT id, username, email, deactivatedon FROM members");
+	$stmt = $mysqlcon->prepare("SELECT usr_id, usr_name FROM user");
 	$stmt->execute();   // Execute the prepared query.
     $dbresult = NULL;
     switch ($fetchmode)
