@@ -72,7 +72,7 @@ sec_session_start();
 
         <md-content class="customcoumn" layout-gt-md="row" layout-padding> </md-content>
     <md-button class="md-raised">New Task</md-button>
-    <md-button class="md-raised">New Projekt</md-button>
+    <md-button class="md-raised" ng-click="showNewProjectDialog()">New Projekt</md-button>
     </div>
 
 <div class="alert alert-success">
@@ -93,8 +93,16 @@ sec_session_start();
         </div>
 
         <div view-source="simple"></div>
-
     </div>
+
+    <div style="visibility: hidden">
+        <div class="md-dialog-container" id="newProject">
+            <md-dialog layout-padding>
+
+            </md-dialog>
+        </div>
+    </div>
+
 </body>
 </html>
 
