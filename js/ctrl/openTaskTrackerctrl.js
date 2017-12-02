@@ -109,9 +109,9 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 	};
 
 
-    $scope.showChangeAdminPWDialog = function () {
+    $scope.showNewProjectDialog = function () {
         $mdDialog.show({
-            contentElement: '#modal_change_pw',
+            contentElement: '#newProject',
             parent: angular.element(document.body),
             clickOutsideToClose: true,
             escapeToClose: true

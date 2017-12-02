@@ -82,8 +82,9 @@ sec_session_start();
 <div>
     <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
     <md-button class="md-raised">New Task</md-button>
-    <md-button class="md-raised">New Projekt</md-button>
-</div>
+    <md-button class="md-raised" ng-click="showNewProjectDialog()">New Projekt</md-button>
+    </div>
+
 
 <div class="alert alert-success">
     <strong>Hallo aglile Welt:</strong>
@@ -104,7 +105,15 @@ sec_session_start();
 
 
         <div view-source="simple"></div>
-
     </div>
+
+    <div style="visibility: hidden">
+        <div class="md-dialog-container" id="newProject">
+            <md-dialog layout-padding>
+
+            </md-dialog>
+        </div>
+    </div>
+
 </body>
 </html>
