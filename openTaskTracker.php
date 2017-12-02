@@ -24,6 +24,7 @@ sec_session_start();
     <script src="bower_components/angular-material/angular-material.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen"
           href="bower_components/angular-material/angular-material.min.css"/>
+    <script src="js/angular-drag-and-drop-lists.js"></script>
 
     <!--End of Injected for Angular Dialogs-->
 
@@ -49,14 +50,12 @@ sec_session_start();
 
 
 <div>
-    <!--<h1>Logged in</h1>-->
     <md-toolbar>
         <div class="md-toolbar-tools">
-
-
-            <md-truncate>Task</md-truncate>
+            <md-truncate>OpenTaskTracker</md-truncate>
         </div>
     </md-toolbar>
+
     <md-content class="customcoumn" layout-gt-md="row" layout-padding>
     </md-content>
 </div>
@@ -79,6 +78,32 @@ sec_session_start();
 </ul>
 
 
+        <md-content class="customcoumn" layout-gt-md="row" layout-padding> </md-content>
+    <md-button class="md-raised">New Task</md-button>
+    <md-button class="md-raised">New Projekt</md-button>
+    </div>
+
+<div class="alert alert-success">
+    <strong>Hallo aglile Welt:</strong>
+</div>
+
+<div class="simpleDemo row">
+    <div class="col-md-8">
+        <div class="row">
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List {{listName}}</h3>
+                    </div>
+                    <div class="panel-body" ng-include="'simple/simple.html'"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div view-source="simple"></div>
+
+    </div>
 </body>
 </html>
 
