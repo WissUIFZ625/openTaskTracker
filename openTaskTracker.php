@@ -53,6 +53,10 @@ sec_session_start();
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
+            <span flex></span>
+            <a style="color:white;" ><?php echo htmlentities($_SESSION['username']); ?></a>
+            <span flex="5"></span>
+            <a style="color:white; " href="include/process_logout.php">Logout</a>
 
 
         </div>
@@ -63,21 +67,7 @@ sec_session_start();
 </div>
 
 
-<ul dnd-list="list">
-    <!-- The dnd-draggable directive makes an element draggable and will
-         transfer the object that was assigned to it. If an element was
-         dragged away, you have to remove it from the original list
-         yourself using the dnd-moved attribute -->
-    <li ng-repeat="item in model.lists"
-        dnd-draggable="item"
-        dnd-moved="list.splice($index, 1)"
-        dnd-effect-allowed="move"
-        dnd-selected="models.selected = item"
-        ng-class="{'selected': models.selected === item}"
-    >
-        {{item.label}}
-    </li>
-</ul>
+
 
 <div>
     <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
@@ -86,26 +76,28 @@ sec_session_start();
     </div>
 
 
-<div class="alert alert-success">
-    <strong>Hallo aglile Welt:</strong>
-</div>
-
 <div class="simpleDemo row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="row">
-            <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-12 middle">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">List {{listName}}</h3>
                     </div>
                     <div class="panel-body" ng-include="'simple/simple.html'"></div>
+
                 </div>
             </div>
         </div>
 
 
-        <div view-source="simple"></div>
+        <div view-source="simple">
+
+        </div>
     </div>
+</div>
+
+
 
     <div style="visibility: hidden">
         <div class="md-dialog-container" id="newProject">
