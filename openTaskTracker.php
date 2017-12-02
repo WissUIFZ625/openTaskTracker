@@ -77,11 +77,11 @@ sec_session_start();
     </li>
 </ul>
 
-
-        <md-content class="customcoumn" layout-gt-md="row" layout-padding> </md-content>
+<div>
+    <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
     <md-button class="md-raised">New Task</md-button>
     <md-button class="md-raised">New Projekt</md-button>
-    </div>
+</div>
 
 <div class="alert alert-success">
     <strong>Hallo aglile Welt:</strong>
@@ -106,4 +106,3 @@ sec_session_start();
     </div>
 </body>
 </html>
-

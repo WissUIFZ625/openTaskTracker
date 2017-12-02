@@ -73,14 +73,14 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         $scope.modelAsJson = angular.toJson(model, true);
     }, true);
 
-	
+
 	$scope.getCustomerData = function() {
-	    	 // use $.param jQuery function to serialize data from JSON 
+	    	 // use $.param jQuery function to serialize data from JSON
 	         var data = $.param({
 				 target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
 	             filter_str: flt
 	         });
-	     
+
 	         var config = {
 	             headers : {
 	                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -95,14 +95,14 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 				//{
 					//////////$scope.shh_maildata = response.shh_maildata;
 				//});
-				 
+
 	         })
 	         .error(function (data, status, header, config) {
 	        //alert(data);
 	         });
 	};
-	
-	
+
+
 	$scope.closeDialog = function()
 	{
 		$mdDialog.hide();
