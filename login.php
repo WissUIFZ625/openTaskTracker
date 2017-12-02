@@ -38,7 +38,7 @@ if (isset($_GET["reg_suc"]) && !empty($_GET["reg_suc"])) {
     if ($_GET["error"] == 1) {
         $error_msg = '<span>Login fehlerhaft</span><br>';
     }
-    
+
 
 }
 

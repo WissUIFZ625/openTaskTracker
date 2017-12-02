@@ -1,6 +1,6 @@
 <?php
 require_once 'loginfunctions_inter.php';
-class CustomerDataCollection_inter extends PractiframeSnippet_inter{
+class CustomerDataCollection_inter extends openTaskTrackerSnippet_inter{
 
 	function __construct() {
 		parent::__construct();
