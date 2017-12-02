@@ -16,9 +16,9 @@ function formhash(form, password) {
     form.submit();
 }
 
-function regformhash(form, uid, email, password, conf) {
+function regformhash(form, uid, password, conf) {
     // Check each field has a value
-    if (uid.value == '' || email.value == '' || password.value == '' || conf.value == '') {
+    if (uid.value == '' || password.value == '' || conf.value == '') {
         alert('Sie müssen alle angeforderten Details angeben. Bitte versuche es erneut');
         return false;
     }

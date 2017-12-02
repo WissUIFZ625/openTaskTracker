@@ -11,26 +11,20 @@ $con = new connect_pdo();
 $pdo = $con->dbh();
 
 
-if (isset($_POST['email'], $_POST['p'])) {
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+if (isset($_POST['nickname'], $_POST['p'])) {
+    $username = filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_STRING);
     $password = $_POST['p']; // The hashed password.
   
-    if (login($email, $password, $pdo) == true) {
+    if (login($username, $password, $pdo) == true) {
         $firstLogin = 1;
     	//$url=get_user_url($pdo);
-        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $username;
 
-        $firstLogincheck = firstLogin($pdo, $firstLogin);
+        //$firstLogincheck = firstLogin($pdo, $firstLogin);
 
-            if($firstLogincheck){
 
-                header("Location: ../connectopenTaskTracker.php");  //../connect ist korrekt !!!!!!!!!!!!
-                exit();
-
-            }else{
                 header("Location: ../openTaskTracker.php");
                 exit();
-            }
 
 
     } else {

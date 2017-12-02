@@ -75,6 +75,16 @@ body {
   z-index: 2;
 }
 
+.errmsg {
+  font-size: 2em;
+  z-index: 0;
+  position: absolute;
+  width: 600px;
+  height: 80px;
+  left: calc(50% - 75px);
+  top: calc(30% - 50px);
+}
+
 .login {
   position: absolute;
   top: calc(50% - 75px);

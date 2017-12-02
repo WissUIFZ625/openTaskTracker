@@ -3,7 +3,6 @@
 include_once 'include/process_register.php';
 include_once 'include/loginfunctions.php';
 
-$error_msg = '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +43,7 @@ set or if the registration script caused an error. -->
         </li>
         <br>
 
-        <?php echo $error_msg ?>
+
 
     </ul>
     </ul>
