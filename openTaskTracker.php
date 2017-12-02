@@ -66,17 +66,51 @@ sec_session_start();
     <!--<h1>Logged in</h1>-->
     <md-toolbar>
         <div class="md-toolbar-tools">
-
-
-            <md-truncate>Task</md-truncate>
+            <md-truncate>OpenTaskTracker</md-truncate>
         </div>
     </md-toolbar>
-        <md-content class="customcoumn" layout-gt-md="row" layout-padding>
-        </md-content>
+
+        <md-content class="customcoumn" layout-gt-md="row" layout-padding> </md-content>
+    <md-button class="md-raised">New Task</md-button>
+    <md-button class="md-raised">New Projekt</md-button>
     </div>
 
+<div class="alert alert-success">
+    <strong>Instructions:</strong>
+    Drag &amp; drop the list items to move them around, or just click to select them.
+    If that's too boring, check out the <a href="#/nested">nested container demo</a>
+</div>
 
+<div class="simpleDemo row">
 
+    <div class="col-md-8">
+        <div class="row">
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List {{listName}}</h3>
+                    </div>
+                    <div class="panel-body" ng-include="'simple/simple.html'"></div>
+                </div>
+            </div>
+        </div>
+
+        <div view-source="simple"></div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Generated Model</h3>
+            </div>
+            <div class="panel-body">
+                <pre class="code">{{modelAsJson}}</pre>
+            </div>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
 
