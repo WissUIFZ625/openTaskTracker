@@ -11,6 +11,7 @@ body {
   color: #fff;
   font-family: 'Exo', sans-serif;
   font-size: 13px;
+  overflow: hidden;
 }
 
 .body {

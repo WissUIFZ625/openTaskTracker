@@ -15,7 +15,7 @@ body{
   color: #fff;
   font-family: 'Exo', sans-serif;
   font-size: 13px;
-
+  overflow: hidden;
 }
 
 .body{
@@ -30,6 +30,7 @@ body{
   background-size: cover;
   -webkit-filter: blur(5px);
   z-index: 0;
+
 }
 
 .grad{

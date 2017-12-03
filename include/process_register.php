@@ -35,14 +35,14 @@ if (isset($_POST['username'], $_POST['p'])) {
     if ($stmt = $pdo->prepare
     (
         "SELECT usr_id, usr_name, usr_password, usr_salt, usr_aut_id
-			FROM user
+			FROM User
             WHERE usr_name = :USER LIMIT 1"
     )
     ) {
         $stmt->bindParam(':USER', $username);
         $stmt->execute();
         $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
-        $prep_stmt = "SELECT usr_id FROM user WHERE usr_name = :USER LIMIT 1";
+        $prep_stmt = "SELECT usr_id FROM User WHERE usr_name = :USER LIMIT 1";
         $stmt = $pdo->prepare($prep_stmt);
         if ($stmt) {
             $stmt->bindParam(':USER', $username);
@@ -63,7 +63,7 @@ if (isset($_POST['username'], $_POST['p'])) {
             $password = hash('sha512', $password . $random_salt);
 
             // Insert the new user into the database
-            if ($insert_stmt = $pdo->prepare("INSERT INTO user (usr_name, usr_password, usr_salt) VALUES (:USERNAME, :PASSWORD , :SALT)")) {
+            if ($insert_stmt = $pdo->prepare("INSERT INTO User (usr_name, usr_password, usr_salt) VALUES (:USERNAME, :PASSWORD , :SALT)")) {
                 $isBatman = 1;
                 $insert_stmt->bindParam(':USERNAME', $username);
                 $insert_stmt->bindParam(':PASSWORD', $password);
@@ -75,14 +75,14 @@ if (isset($_POST['username'], $_POST['p'])) {
                     exit();
                 } else {
                     header('Location: login.php?reg_suc=1');
-                    if ($stmt = $pdo->prepare("SELECT usr_id FROM user WHERE user = :USER LIMIT 1")) {
+                    if ($stmt = $pdo->prepare("SELECT usr_id FROM User WHERE user = :USER LIMIT 1")) {
                         $stmt->bindParam(':USER', $username);
                         if ($stmt->execute()) //if(!$stmt->execute())
                         {
                             $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
                             if (inital_usr_exists($pdo) && $first_usrtabl_stat) //Erstellter User ist InitialUser
                             {
-                                $usriddb = $dbresult['id'];
+                                $usriddb = $dbresult['usr_id'];
                                 //header('Location: http://www.google.ch');
                                 //exit();
 

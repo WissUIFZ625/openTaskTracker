@@ -8,12 +8,12 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 {
     $scope.models = {
         selected: null,
-        lists: {"A": [], "B": []}
+        lists: {"Sprints": [], "B": []}
     };
 
     // Generate initial model
     for (var i = 1; i <= 10; ++i) {
-        $scope.models.lists.A.push({label: "Item A" + i});
+        $scope.models.lists.Sprints.push({label: "Item A" + i});
         $scope.models.lists.B.push({label: "Item B" + i});
     }
 
@@ -23,49 +23,16 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     }, true);
 
 
-   /* $scope.getCustomerData = function () {
-        // use $.param jQuery function to serialize data from JSON
-        var data = $.param({
-            target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
-            filter_str: flt
-        });
+    $scope.states = ('Schweiz Deutschland Frankreich Italien ' +
+        'Österreich Spanien').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
 
-        var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        };
-
-        $http.post('ajax_inter/getjsondata_inter.php', data, config)
-            .success(function (response, status, headers, config) {
-
-                $scope.customerdata = response.customerdata;
-                //$scope.$apply(function ()
-                //{
-                //////////$scope.shh_maildata = response.shh_maildata;
-                //});
-
-            })
-            .error(function (data, status, header, config) {
-                //alert(data);
-            });
-    };
-*/
 
     $scope.closeDialog = function () {
         $mdDialog.hide();
     };
 
-    // Generate initial model
-    for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.A.push({label: "Item A" + i});
-        $scope.models.lists.B.push({label: "Item B" + i});
-    }
-
-    // Model to JSON for demo purpose
-    $scope.$watch('models', function(model) {
-        $scope.modelAsJson = angular.toJson(model, true);
-    }, true);
 
 
 	$scope.getCustomerData = function() {
