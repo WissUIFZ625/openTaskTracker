@@ -42,8 +42,8 @@ class connect_pdo
 
         //private   $db_user="root";
        // private   $user_pw="";
-        private   $db_user="sysadmin";
-        private   $user_pw="4528xi4528root";
+        private   $db_user="root";
+        private   $user_pw="";
 
 
         public function __construct(){
