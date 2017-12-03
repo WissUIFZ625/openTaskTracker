@@ -7,7 +7,6 @@ include_once 'include/permission_functions.php';
 include_once 'include/permission_login_check.php';
 
 
-
 sec_session_start(); //Wird nur gebraucht, wenn User eingelogt sein muss auf der Seite, bei index.php beispielsweise nicht
 //DB-Initialisierung
 $con = new connect_pdo();
@@ -65,7 +64,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
             <span flex></span>
-            <a style="color:white;" ><?php echo htmlentities($_SESSION['username']); ?></a>
+            <a style="color:white;"><?php echo htmlentities($_SESSION['username']); ?></a>
             <span flex="5"></span>
             <a style="color:white; " href="include/process_logout.php">Logout</a>
 
@@ -73,44 +72,94 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
         </div>
     </md-toolbar>
 
-    <md-content class="customcoumn" layout-gt-md="row" layout-padding>
+
+</div>
+
+<div class="buttonbar">
+    <md-content layout-gt-md="row">
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="showNewTaskDialog()">New Task</md-button>
+        <md-button class="md-raised md-warn" ng-click="showNewProjectDialog()">New Projekt</md-button>
+        <span flex></span>
     </md-content>
 </div>
 
-<md-input-container class="md-block" flex="10">
-    <label>Land</label>
-    <md-select ng-change="showSaveButton = true"
-               ng-model="customerdata.ident.land[$index]">
-        <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-            {{state.abbrev}}
-        </md-option>
-    </md-select>
-</md-input-container>
-
-
-
 
 <div>
-    <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
-    <md-button class="md-raised" ng-click="showNewTaskDialog()">New Task</md-button>
-    <md-button class="md-raised" ng-click="showNewProjectDialog()">New Projekt</md-button>
-    </div>
+    <md-content layout-gt-md="row">
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Projectstatus</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="status">
+                <md-option ng-repeat="projectstate in projectstatus" value="{{projectstate.abbrev}}">
+                    {{projectstate.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Bearbeiter</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="bearbeiter">
+                <md-option ng-repeat="projectma in projectbearbeiter" value="{{projectma.abbrev}}">
+                    {{projectma.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+        <md-dialog-actions
+                ng-show="showSaveButton">
+            <md-button class="md-raised">
+                Anzeigen
+            </md-button>
+        </md-dialog-actions>
+        <md-dialog-actions
+                ng-hide="showSaveButton">
+
+                <label style="margin-top: 20px;">
+                    Select your Filter
+                </label>
+
+        </md-dialog-actions>
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Produktebacklogs</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="backlogs">
+                <md-option ng-repeat="backlogs in produktbacklogs" value="{{backlogs.abbrev}}">
+                    {{backlogs.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Major-Projekte</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="major">
+                <md-option ng-repeat="major in majorprojekt" value="{{major.abbrev}}">
+                    {{major.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+    </md-content>
+</div>
 
 
 <div class="simpleDemo row ">
-    <div class="col-md-12 ">
+    <div class="col-sm-12 ">
         <div class="row ">
             <div ng-repeat="(listName, list) in models.lists" class="col-md-12 middle content">
                 <div class="panel panel-info ">
                     <div class="panel-heading ">
-                        <h3 class="panel-title ">List {{listName}}</h3>
+                        <h3 class="panel-title ">{{listName}}</h3>
                     </div>
                     <div class="panel-body " ng-include="'simple/simple.html'"></div>
 
                 </div>
             </div>
         </div>
-
 
         <div view-source="simple">
 
@@ -119,14 +168,21 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
 </div>
 
 
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newProject">
+        <md-dialog layout-padding>
 
-    <div style="visibility: hidden">
-        <div class="md-dialog-container" id="newProject">
-            <md-dialog layout-padding>
-
-            </md-dialog>
-        </div>
+        </md-dialog>
     </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newTaskProject">
+        <md-dialog layout-padding>
+
+        </md-dialog>
+    </div>
+</div>
 
 </body>
 </html>

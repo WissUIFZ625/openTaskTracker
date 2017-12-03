@@ -8,14 +8,31 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 {
     $scope.models = {
         selected: null,
-        lists: {"Sprints": [], "B": []}
+        lists: { "Projekte": [],"Sprints": [], "Produktebacklogs": []}
     };
 
+    $scope.status =  '';
+    $scope.beareiter = 'Markus';
+    $scope.backlogs = '';
+    $scope.major = '';
+
+
     // Generate initial model
-    for (var i = 1; i <= 10; ++i) {
-        $scope.models.lists.Sprints.push({label: "Item A" + i});
-        $scope.models.lists.B.push({label: "Item B" + i});
+    for (var i = 1; i <= 20; ++i) {
+        $scope.models.lists.Produktebacklogs.push({label: "Produktebacklogs B" + i });
     }
+
+
+    for (var i = 1; i <= 2; ++i) {
+        $scope.models.lists.Projekte.push({label: "Projekte " + i +  $scope.beareiter});
+    }
+
+
+    for (var i = 1; i <= 10; ++i) {
+        $scope.models.lists.Sprints.push({label: "Sprints A" + i});
+    }
+
+
 
     // Model to JSON for demo purpose
     $scope.$watch('models', function(model) {
@@ -23,11 +40,25 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     }, true);
 
 
-    $scope.states = ('Schweiz Deutschland Frankreich Italien ' +
-        'Österreich Spanien').split(' ').map(function(state) {
+    $scope.projectstatus = ('open closed running' +
+        '').split(' ').map(function(state) {
         return {abbrev: state};
     });
 
+    $scope.projectbearbeiter = ('Markus Stefan Ivo' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.produktbacklogs = ('Backlog1 Backlog2 Backlog3' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.majorprojekt = ('majorprojekt1 majorprojekt2 majorprojekt3' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
 
     $scope.closeDialog = function () {
         $mdDialog.hide();
@@ -81,7 +112,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
     $scope.showNewTaskDialog = function () {
         $mdDialog.show({
-            contentElement: '#newProject',
+            contentElement: '#newTaskProject',
             parent: angular.element(document.body),
             clickOutsideToClose: true,
             escapeToClose: true
