@@ -625,6 +625,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         );
     };
     $scope.getTasks =function (){
+        flt.type ="allTasks";
         // use $.param jQuery function to serialize data from JSON
         var data = $.param({
             target_id: "ProjectCollection", //target_id: "WebSwitchCollection"
@@ -639,7 +640,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
         $http.post('ajax/getjsondata.php', data, config)
             .success(function (response, status, headers, config) {
-
+                flt.type='';
                 $scope.webswitches = response.webswitches;
             })
             .error(function (data, status, header, config) {

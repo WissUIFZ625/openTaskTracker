@@ -7,9 +7,19 @@ class ProjectCollection extends openTaskTrackerSnippet
         parent::__construct();
     }
 
+
+
     function buildContent($filter)
     {
-        $type = "allTasks";
+        $type='';
+
+        if (is_array($filter) && key_exists('type', $filter)) {
+            $type = $filter['type'];
+        }
+
+
+
+
 
 
         switch ($type) {
@@ -41,6 +51,11 @@ class ProjectCollection extends openTaskTrackerSnippet
                 $statement = $this->pdo->prepare("SELECT * FROM Project");
                 $statement->execute();
                 $project = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $devjson = array();
+                $devjson["projects"] = $project;
+
+                $frt = json_encode($devjson);
+                $this->json = $frt;
             }
                 break;
 
@@ -48,18 +63,33 @@ class ProjectCollection extends openTaskTrackerSnippet
                 $statement = $this->pdo->prepare("SELECT * FROM `Group`");
                 $statement->execute();
                 $group = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $devjson = array();
+                $devjson["groups"] = $group;
+
+                $frt = json_encode($devjson);
+                $this->json = $frt;
             }
                 break;
             case"user": {
                 $statement = $this->pdo->prepare("SELECT * FROM `User`");
                 $statement->execute();
                 $user = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $devjson = array();
+                $devjson["users"] = $user;
+
+                $frt = json_encode($devjson);
+                $this->json = $frt;
             }
                 break;
             case"Tags": {
                 $statement = $this->pdo->prepare("SELECT * FROM `Tag`");
                 $statement->execute();
                 $tag = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $devjson = array();
+                $devjson["tags"] = $tag;
+
+                $frt = json_encode($devjson);
+                $this->json = $frt;
             }
                 break;
             default: {
