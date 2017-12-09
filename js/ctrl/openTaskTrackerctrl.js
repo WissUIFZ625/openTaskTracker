@@ -605,4 +605,26 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .ok('OK')
         );
     };
+    $scope.getTasks =function (){
+        // use $.param jQuery function to serialize data from JSON
+        var data = $.param({
+            target_id: "ProjectCollection", //target_id: "WebSwitchCollection"
+            filter_str: flt
+        });
+
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        $http.post('ajax/getjsondata.php', data, config)
+            .success(function (response, status, headers, config) {
+
+                $scope.webswitches = response.webswitches;
+            })
+            .error(function (data, status, header, config) {
+                //alert(data);
+            });
+    }
 });
