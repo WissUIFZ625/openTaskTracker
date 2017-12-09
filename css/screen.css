@@ -2,8 +2,8 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 body {
   margin: 0;
   padding: 0;
@@ -11,7 +11,6 @@ body {
   color: #fff;
   font-family: 'Exo', sans-serif;
   font-size: 13px;
-  overflow: hidden;
 }
 
 .body {
@@ -239,4 +238,21 @@ body {
 
 .logout {
   right: 20px;
+}
+
+.middle {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.buttonbar {
+  min-height: 44px;
+  text-align: center;
+  top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.selectyourFilter {
+  margin-top: 20px;
 }

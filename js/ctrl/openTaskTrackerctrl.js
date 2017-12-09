@@ -8,70 +8,62 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 {
     $scope.models = {
         selected: null,
-        lists: {"A": [{
-                "label": "Item A1"
-            },
-
-                {
-                    "label": "Item A2"
-                },
-                {
-                    "label": "Item A3"
-                }], "B": [{
-                "label": "Item B1"
-            },
-                {
-                    "label": "Item B2"
-                },
-                {
-                    "label": "Item B3"
-                }]}
+        lists: { "Projekte": [],"Sprints": [], "Produktebacklogs": []}
     };
 
+    $scope.status =  '';
+    $scope.beareiter = 'Markus';
+    $scope.backlogs = '';
+    $scope.major = '';
 
-    $scope.getCustomerData = function () {
-        // use $.param jQuery function to serialize data from JSON
-        var data = $.param({
-            target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
-            filter_str: flt
-        });
-
-        var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        };
-
-        $http.post('ajax_inter/getjsondata_inter.php', data, config)
-            .success(function (response, status, headers, config) {
-
-                $scope.customerdata = response.customerdata;
-                //$scope.$apply(function ()
-                //{
-                //////////$scope.shh_maildata = response.shh_maildata;
-                //});
-
-            })
-            .error(function (data, status, header, config) {
-                //alert(data);
-            });
-    };
-
-
-    $scope.closeDialog = function () {
-        $mdDialog.hide();
-    };
 
     // Generate initial model
-    for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.A.push({label: "Item A" + i});
-        $scope.models.lists.B.push({label: "Item B" + i});
+    for (var i = 1; i <= 20; ++i) {
+        $scope.models.lists.Produktebacklogs.push({label: "Produktebacklogs B" + i });
     }
+
+
+    for (var i = 1; i <= 2; ++i) {
+        $scope.models.lists.Projekte.push({label: "Projekte " + i +  $scope.beareiter});
+    }
+
+
+    for (var i = 1; i <= 10; ++i) {
+        $scope.models.lists.Sprints.push({label: "Sprints A" + i});
+    }
+
+
 
     // Model to JSON for demo purpose
     $scope.$watch('models', function(model) {
         $scope.modelAsJson = angular.toJson(model, true);
     }, true);
+
+
+    $scope.projectstatus = ('open closed running' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.projectbearbeiter = ('Markus Stefan Ivo' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.produktbacklogs = ('Backlog1 Backlog2 Backlog3' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.majorprojekt = ('majorprojekt1 majorprojekt2 majorprojekt3' +
+        '').split(' ').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.closeDialog = function () {
+        $mdDialog.hide();
+    };
+
 
 
 	$scope.getCustomerData = function() {
@@ -120,7 +112,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
     $scope.showNewTaskDialog = function () {
         $mdDialog.show({
-            contentElement: '#newProject',
+            contentElement: '#newTaskProject',
             parent: angular.element(document.body),
             clickOutsideToClose: true,
             escapeToClose: true

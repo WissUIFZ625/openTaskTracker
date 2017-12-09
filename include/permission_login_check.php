@@ -163,7 +163,7 @@ function is_as_admin_permitted ($pdo,  $not_logedIn_url, $not_permission_url, $m
     $full_url = $_SERVER['PHP_SELF'];
     $full_url = explode('/',$full_url);
     //$full_url = $full_url[0].'/'.$full_url[1].'/index.php';
-    $full_url = '../index.php';
+    $full_url = 'index.php';
     //header('Location:http://'.$full_url);
     go_back($full_url, false, $message_toDisplay_NotPermited);
 

@@ -1,11 +1,21 @@
 <?php
-//include_once 'include/loginfunctions.php';
-//require_once 'include/handle_session.php';
-//$session = new SecureSessionHandler('test');
-//$session->start();
-require_once 'include/loginfunctions.php';
+
+include_once 'include/pdoinit.php';
+include_once 'include/loginfunctions.php';
+
+include_once 'include/permission_functions.php';
+include_once 'include/permission_login_check.php';
+
+
+sec_session_start(); //Wird nur gebraucht, wenn User eingelogt sein muss auf der Seite, bei index.php beispielsweise nicht
+//DB-Initialisierung
+$con = new connect_pdo();
+$pdo = $con->dbh();
+
 
 sec_session_start();
+is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer Einstellungen', $return_back = TRUE);
+
 ?>
 
 <html lang="de" ng-app="openTaskTracker_App" class="responsivelayout">
@@ -53,67 +63,126 @@ sec_session_start();
     <md-toolbar>
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
+            <span flex></span>
+            <a style="color:white;"><?php echo htmlentities($_SESSION['username']); ?></a>
+            <span flex="5"></span>
+            <a style="color:white; " href="include/process_logout.php">Logout</a>
 
 
         </div>
     </md-toolbar>
 
-    <md-content class="customcoumn" layout-gt-md="row" layout-padding>
+
+</div>
+
+<div class="buttonbar">
+    <md-content layout-gt-md="row">
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="showNewTaskDialog()">New Task</md-button>
+        <md-button class="md-raised md-warn" ng-click="showNewProjectDialog()">New Projekt</md-button>
+        <span flex></span>
     </md-content>
 </div>
 
 
-<ul dnd-list="list">
-    <!-- The dnd-draggable directive makes an element draggable and will
-         transfer the object that was assigned to it. If an element was
-         dragged away, you have to remove it from the original list
-         yourself using the dnd-moved attribute -->
-    <li ng-repeat="item in model.lists"
-        dnd-draggable="item"
-        dnd-moved="list.splice($index, 1)"
-        dnd-effect-allowed="move"
-        dnd-selected="models.selected = item"
-        ng-class="{'selected': models.selected === item}"
-    >
-        {{item.label}}
-    </li>
-</ul>
-
 <div>
-    <md-content class="customcoumn" layout-gt-md="row" layout-padding></md-content>
-    <md-button class="md-raised" ng-click="showNewTaskDialog()">New Task</md-button>
-    <md-button class="md-raised" ng-click="showNewProjectDialog()">New Projekt</md-button>
-    </div>
+    <md-content layout-gt-md="row">
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Projectstatus</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="status">
+                <md-option ng-repeat="projectstate in projectstatus" value="{{projectstate.abbrev}}">
+                    {{projectstate.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Bearbeiter</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="bearbeiter">
+                <md-option ng-repeat="projectma in projectbearbeiter" value="{{projectma.abbrev}}">
+                    {{projectma.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+        <md-dialog-actions
+                ng-show="showSaveButton">
+            <md-button class="md-raised">
+                Anzeigen
+            </md-button>
+        </md-dialog-actions>
+        <md-dialog-actions
+                ng-hide="showSaveButton">
 
+                <label style="margin-top: 20px;">
+                    Select your Filter
+                </label>
 
-<div class="alert alert-success">
-    <strong>Hallo aglile Welt:</strong>
+        </md-dialog-actions>
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Produktebacklogs</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="backlogs">
+                <md-option ng-repeat="backlogs in produktbacklogs" value="{{backlogs.abbrev}}">
+                    {{backlogs.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+        <md-input-container class="md-block" flex="15">
+            <label>Major-Projekte</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="major">
+                <md-option ng-repeat="major in majorprojekt" value="{{major.abbrev}}">
+                    {{major.abbrev}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <span flex></span>
+    </md-content>
 </div>
 
-<div class="simpleDemo row">
-    <div class="col-md-8">
-        <div class="row">
-            <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">List {{listName}}</h3>
+
+<div class="simpleDemo row ">
+    <div class="col-sm-12 ">
+        <div class="row ">
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-12 middle content">
+                <div class="panel panel-info ">
+                    <div class="panel-heading ">
+                        <h3 class="panel-title ">{{listName}}</h3>
                     </div>
-                    <div class="panel-body" ng-include="'simple/simple.html'"></div>
+                    <div class="panel-body " ng-include="'simple/simple.html'"></div>
+
                 </div>
             </div>
         </div>
 
+        <div view-source="simple">
 
-        <div view-source="simple"></div>
-    </div>
-
-    <div style="visibility: hidden">
-        <div class="md-dialog-container" id="newProject">
-            <md-dialog layout-padding>
-
-            </md-dialog>
         </div>
     </div>
+</div>
+
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newProject">
+        <md-dialog layout-padding>
+
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newTaskProject">
+        <md-dialog layout-padding>
+
+        </md-dialog>
+    </div>
+</div>
 
 </body>
 </html>

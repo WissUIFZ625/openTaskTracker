@@ -112,7 +112,7 @@ function login($username, $input_password, $mysqlcon)
 {
     /* if ($username == 'Admin') {*/
 
-    if ($stmt = $mysqlcon->prepare("SELECT usr_id, usr_name, usr_password, usr_salt FROM user WHERE  usr_name = :USER LIMIT 1")) {
+    if ($stmt = $mysqlcon->prepare("SELECT usr_id, usr_name, usr_password, usr_salt FROM User WHERE  usr_name = :USER LIMIT 1")) {
         $stmt->bindParam(':USER', $username);
         $stmt->execute();
         $dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
