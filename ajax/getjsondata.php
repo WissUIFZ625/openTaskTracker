@@ -14,7 +14,7 @@ if (isset($_POST['target_id']) ) {
 
 $collection = new GetSnipperCollection;
 
-$snippet = $collection->doPractiframeCollection($type);
+$snippet = $collection->doopenTaskTrackerCollection($type);
 $snippet->buildContent($filter);
 $output = $snippet->getJson();
 echo $output;

@@ -12,7 +12,7 @@ class ProjectCollection extends openTaskTrackerSnippet
         $statement->execute();
         $task = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-      
+
 
         $devjson = array();
         $devjson["tasks"] = $task;
