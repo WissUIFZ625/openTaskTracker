@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ivo
- * Date: 02.12.2017
- * Time: 14:29
- */
-
 class ProjectCollection extends openTaskTrackerSnippet
 {
     function __construct()
@@ -19,6 +12,12 @@ class ProjectCollection extends openTaskTrackerSnippet
         $statement->execute();
         $task = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        vardump($task);
+      
+
+        $devjson = array();
+        $devjson["tasks"] = $task;
+
+        $frt = json_encode($devjson);
+        $this->json = $frt;
     }
 }

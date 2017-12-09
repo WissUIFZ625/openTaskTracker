@@ -601,25 +601,25 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         );
     };
     $scope.getTasks =function (){
-
-        $.ajax({
-            type: 'POST',
-            url: 'include/ProjectCollection.php',
-            data: {
-
-            },
-            success: function (data) {
-
-            },
-            error: function (xhr, textStatus, error) {
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
-            }
-
-        }).done(function (result) {
-
+        // use $.param jQuery function to serialize data from JSON
+        var data = $.param({
+            target_id: "ProjectCollection", //target_id: "WebSwitchCollection"
+            filter_str: flt
         });
 
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        $http.post('ajax/getjsondata.php', data, config)
+            .success(function (response, status, headers, config) {
+
+                $scope.webswitches = response.webswitches;
+            })
+            .error(function (data, status, header, config) {
+                //alert(data);
+            });
     }
 });
