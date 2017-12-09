@@ -64,7 +64,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
             <span flex></span>
-            <a style="color:white;"><?php echo htmlentities($_SESSION['username']); ?></a>
+            <a style="color:white;" id="settings" ng-click="showSettings()"><?php echo htmlentities($_SESSION['username']); ?></a>
             <span flex="5"></span>
             <a style="color:white; " href="include/process_logout.php">Logout</a>
 
@@ -178,7 +178,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                         <h2>Neues Projekt erstellen</h2>
                         <span flex></span>
                         <md-button class="md-icon-button" ng-click="closeDialog()">
-                            <img src="img_inter/close.png" aria-label="Close dialog" class="ng-scope">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
                         </md-button>
                     </div>
                 </md-toolbar>
@@ -206,7 +206,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                                             <md-input-container class="md-block" flex="100">
                                                 <label>Projekt Gruppe</label>
                                                 <md-select  id="inp_group" ng-required="true" title="Projekt Gruppe"
-                                                            ng-model="status">
+                                                            ng-model="projekt.group">
                                                     <md-option ng-repeat="projectgroup in projectgruppe" value="{{projectgroup.abbrev}}">
                                                         {{projectgroup.abbrev}}
                                                     </md-option>
@@ -219,9 +219,98 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                                             <md-input-container class="md-block" flex="100">
                                                 <label>Projectstatus</label>
                                                 <md-select  id="inp_status" ng-required="true"
-                                                           ng-model="status">
+                                                           ng-model="projekt.status">
                                                     <md-option ng-repeat="projectstate in projectstatus" value="{{projectstate.abbrev}}">
                                                         {{projectstate.abbrev}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </md-tab-body>
+
+                        </md-tab>
+
+                    </md-tabs>
+                </md-dialog-content>
+                <md-dialog-actions>
+                    <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                    <md-button class="md-primary" ng-click="closeDialog()" id="save_new_task">Speichern
+                    </md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newTaskProject">
+        <md-dialog aria-label="Neuer Task erstellen...">
+
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Neues Task erstellen</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                    <md-tabs md-dynamic-height="true">
+                        <md-tab>
+
+                            <md-tab-body>
+                                <div layout="column">
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block">
+                                                <input flex="100" type="text" id="inp_task_titel"
+                                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                       placeholder="Task Titel" data-toggle="tooltip"
+                                                       title="Titel"
+                                                       name="task_titel" ng-model="task.titel"  ng-required="true"
+                                                       data-original-title="Titel">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block">
+                                                <input flex="100" type="text" id="inp_beschrieb_titel"
+                                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                       placeholder="Task Beschrieb" data-toggle="tooltip"
+                                                       title="Beschrieb"
+                                                       name="task_beschrieb" ng-model="task.beschreieb"  ng-required="true"
+                                                       data-original-title="Beschrieb">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Bearbeitungszeit SOLL</label>
+                                                <md-select  id="inp_time" ng-required="true"
+                                                            ng-model="task.time">
+                                                    <md-option ng-repeat="time in tasktime" value="{{time.abbrev}}">
+                                                        {{time.abbrev}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Priorität</label>
+                                                <md-select  id="inp_prio" ng-required="true"
+                                                            ng-model="task.prio">
+                                                    <md-option ng-repeat="prio in taskprio" value="{{prio.abbrev}}">
+                                                        {{prio.abbrev}}
                                                     </md-option>
                                                 </md-select>
                                             </md-input-container>
@@ -245,10 +334,30 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
     </div>
 </div>
 
-<div style="visibility: hidden">
-    <div class="md-dialog-container" id="newTaskProject">
-        <md-dialog layout-padding>
 
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="openSettings">
+        <md-dialog aria-label="Settings">
+
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Settings</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                   <!--Hier kommt mein Dialog-->
+                <md-dialog-actions>
+                    <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                    <md-button class="md-primary" ng-click="closeDialog()" id="save_settings">Speichern
+                    </md-button>
+                </md-dialog-actions>
+            </form>
         </md-dialog>
     </div>
 </div>
