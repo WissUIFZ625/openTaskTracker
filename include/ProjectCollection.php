@@ -1,4 +1,5 @@
 <?php
+
 class ProjectCollection extends openTaskTrackerSnippet
 {
     function __construct()
@@ -8,37 +9,63 @@ class ProjectCollection extends openTaskTrackerSnippet
 
     function buildContent($filter)
     {
-        $type="allTasks";
+        $type = "allTasks";
 
-        $statement = $this->pdo->prepare("SELECT * FROM Task
-LEFT JOIN Priority ON Priority.pri_id = Task.task_pri_id
-LEFT JOIN TagInTask ON tit_task_id = task_id 
-LEFT JOIN Tag ON tag_id = tit_tag_id
-LEFT JOIN Taskstatus ON tst_id = task_tst_id
-LEFT JOIN Backlog ON blog_id = task_blog_id
-Left JOIN Sprint ON  spr_blog_id = blog_id
-LEFT JOIN Project ON  pro_id = blog_pro_id
-LEFT JOIN Projectstatus ON pst_id = pro_pst_id
-LEFT JOIN `Group` ON grp_id = pro_grp_id
-LEFT JOIN  UserInGroup ON usrgrp_grp_id = grp_id
-LEFT JOIN  `User` ON usrgrp_grp_id = usr_id
-
-");
-
-        $statement->execute();
-        $task = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         switch ($type) {
             case "allTasks": {
+                $statement = $this->pdo->prepare("SELECT * FROM Task
+                LEFT JOIN Priority ON Priority.pri_id = Task.task_pri_id
+                LEFT JOIN TagInTask ON tit_task_id = task_id 
+                LEFT JOIN Tag ON tag_id = tit_tag_id
+                LEFT JOIN Taskstatus ON tst_id = task_tst_id
+                LEFT JOIN Backlog ON blog_id = task_blog_id
+                LEFT JOIN Sprint ON  spr_blog_id = blog_id
+                LEFT JOIN Project ON  pro_id = blog_pro_id
+                LEFT JOIN Projectstatus ON pst_id = pro_pst_id
+                LEFT JOIN `Group` ON grp_id = pro_grp_id
+                LEFT JOIN  UserInGroup ON usrgrp_grp_id = grp_id
+                LEFT JOIN  `User` ON usrgrp_grp_id = usr_id
+");
+
+                $statement->execute();
+                $task = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $devjson = array();
                 $devjson["tasks"] = $task;
 
                 $frt = json_encode($devjson);
                 $this->json = $frt;
-            }break;
-            case"":{
+            }
+                break;
+            case"project": {
+                $statement = $this->pdo->prepare("SELECT * FROM Project");
+                $statement->execute();
+                $project = $statement->fetchAll(PDO::FETCH_ASSOC);
+            }
+                break;
 
-            }break;
-    }
+            case"group": {
+                $statement = $this->pdo->prepare("SELECT * FROM `Group`");
+                $statement->execute();
+                $group = $statement->fetchAll(PDO::FETCH_ASSOC);
+            }
+                break;
+            case"user": {
+                $statement = $this->pdo->prepare("SELECT * FROM `User`");
+                $statement->execute();
+                $user = $statement->fetchAll(PDO::FETCH_ASSOC);
+            }
+                break;
+            case"Tags": {
+                $statement = $this->pdo->prepare("SELECT * FROM `Tag`");
+                $statement->execute();
+                $tag = $statement->fetchAll(PDO::FETCH_ASSOC);
+            }
+                break;
+            default: {
+                return "errorCaseType";
+            }
+                break;
+        }
     }
 }
