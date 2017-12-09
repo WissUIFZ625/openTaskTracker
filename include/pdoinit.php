@@ -9,23 +9,7 @@ class LocationRight {
 	const CONF = 31;
 }
 
-class openTaskTrackerUrl {
 
-	const DEFAULT_USER_URL = "../switchgui.php";//Angepasst, da sonst neue User mit Berechtigung auf include/switchgui.php weitergeleitet werden
-
-	const WEBSWITCH_URL = "switchgui.php";
-	const WEBSWITCH_CONF_URL = "webswitch.php";
-	const ENOSWITCH_CONF_URL = "enoceanconfig.php";
-	const ENOSWITCH_INSTALL_URL = "enoceaninstall.php";
-	const INSTALL_URL = "installation.php";
-	const ACCESS_URL = "access_management.php";
-	const LOCATION_URL = "location.php";
-	const USER_URL = "users.php";
-	const NO_ROOM_URL = "../roominfo.php"; //Angepasst, da sonst neue User ohne Berechtigung auf include/roominfo.php weitergeleitet werden
-	const MOBILE2_URL = "mobswitch2.php";
-	const MOBILE3_URL = "mobswitch3.php";
-
-}
 
 class VirtualNode {
 
@@ -36,19 +20,27 @@ class VirtualNode {
 
 class connect_pdo
 {
-	protected $con;
-        private   $db_host="localhost";
-        private   $db_name="ott";
 
-        //private   $db_user="root";
-       // private   $user_pw="";
-        private   $db_user="root";
-        private   $user_pw="";
+    protected $con;
+    protected $db_host;  //  hostname
+    protected $db_name;  //  databasename
+    protected $db_user;  //  username
+    protected $user_pw;  //  password
+    protected $user_db;  //  password
+    protected $server_name; //Hostname (xaxad.xy)
 
 
         public function __construct(){
 
-		try {
+
+            try {
+
+                        $this->db_host = 'localhost';  //  hostname
+                        $this->db_name = 'ott';  //  databasename
+                        $this->db_user = 'root';  //  username
+                        $this->user_pw = '';  //  password
+
+
             $this->getSqlCredentials();
             $this->con = new PDO('mysql:host='.$this->db_host.'; dbname='.$this->db_name, $this->db_user, $this->user_pw, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET sql_mode='NO_AUTO_VALUE_ON_ZERO',  NAMES 'utf8'") );
 			$this->con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );

@@ -50,6 +50,16 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         return {abbrev: state};
     });
 
+    $scope.tasktime = ('1;2;3;4;5;6;7;8;9' +
+        '').split(';').map(function(state) {
+        return {abbrev: state};
+    });
+
+    $scope.taskprio = ('low;mid;hight' +
+        '').split(';').map(function(state) {
+        return {abbrev: state};
+    });
+
     $scope.projectbearbeiter = ('Markus Stefan Ivo' +
         '').split(' ').map(function(state) {
         return {abbrev: state};
@@ -84,7 +94,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 	             }
 	         };
 
-	         $http.post('ajax_inter/getjsondata_inter.php', data, config)
+	         $http.post('ajax/getjsondata.php', data, config)
 	         .success(function (response, status, headers, config) {
 
 			 $scope.customerdata = response.customerdata;
@@ -118,6 +128,15 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     $scope.showNewTaskDialog = function () {
         $mdDialog.show({
             contentElement: '#newTaskProject',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            escapeToClose: true
+        });
+    };
+
+    $scope.showSettings = function () {
+        $mdDialog.show({
+            contentElement: '#openSettings',
             parent: angular.element(document.body),
             clickOutsideToClose: true,
             escapeToClose: true
