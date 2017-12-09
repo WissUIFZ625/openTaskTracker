@@ -241,5 +241,5 @@ $(document).ready(function () {
 //
 //                        });
 
-
+scopetmp.getTasks();
 });

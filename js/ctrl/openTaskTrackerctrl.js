@@ -608,4 +608,26 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .ok('OK')
         );
     };
+    $scope.getTasks =function (){
+
+        $.ajax({
+            type: 'POST',
+            url: 'include/ProjectCollection.php',
+            data: {
+
+            },
+            success: function (data) {
+
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+
+        }).done(function (result) {
+
+        });
+
+    }
 });
