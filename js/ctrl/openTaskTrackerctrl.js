@@ -45,6 +45,11 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         return {abbrev: state};
     });
 
+    $scope.projectgruppe = ('Admin;Was auch immer;User' +
+        '').split(';').map(function(state) {
+        return {abbrev: state};
+    });
+
     $scope.projectbearbeiter = ('Markus Stefan Ivo' +
         '').split(' ').map(function(state) {
         return {abbrev: state};

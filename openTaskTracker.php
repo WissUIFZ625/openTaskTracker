@@ -13,7 +13,7 @@ $con = new connect_pdo();
 $pdo = $con->dbh();
 
 
-sec_session_start();
+
 is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer Einstellungen', $return_back = TRUE);
 
 ?>
@@ -170,8 +170,77 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
 
 <div style="visibility: hidden">
     <div class="md-dialog-container" id="newProject">
-        <md-dialog layout-padding>
+        <md-dialog aria-label="Neues Projekt erstellen ...">
 
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Neues Projekt erstellen</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="img_inter/close.png" aria-label="Close dialog" class="ng-scope">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                    <md-tabs md-dynamic-height="true">
+                        <md-tab>
+
+                            <md-tab-body>
+                                <div layout="column">
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block">
+                                                <input flex="100" type="text" id="inp_projekt_titel"
+                                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                       placeholder="Projekt Titel" data-toggle="tooltip"
+                                                       title="Titel"
+                                                       name="projekt_titel" ng-model="projekt.titel"  ng-required="true"
+                                                       data-original-title="Titel">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Projekt Gruppe</label>
+                                                <md-select  id="inp_group" ng-required="true" title="Projekt Gruppe"
+                                                            ng-model="status">
+                                                    <md-option ng-repeat="projectgroup in projectgruppe" value="{{projectgroup.abbrev}}">
+                                                        {{projectgroup.abbrev}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Projectstatus</label>
+                                                <md-select  id="inp_status" ng-required="true"
+                                                           ng-model="status">
+                                                    <md-option ng-repeat="projectstate in projectstatus" value="{{projectstate.abbrev}}">
+                                                        {{projectstate.abbrev}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </md-tab-body>
+
+                        </md-tab>
+
+                    </md-tabs>
+                </md-dialog-content>
+                <md-dialog-actions>
+                    <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                    <md-button class="md-primary" ng-click="closeDialog()" id="save_new_project">Speichern
+                    </md-button>
+                </md-dialog-actions>
+            </form>
         </md-dialog>
     </div>
 </div>
