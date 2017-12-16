@@ -19,9 +19,6 @@ class ProjectCollection extends openTaskTrackerSnippet
 
 
 
-
-
-
         switch ($type) {
             case "allTasks": {
                 $statement = $this->pdo->prepare("SELECT * FROM Task
