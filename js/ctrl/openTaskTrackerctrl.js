@@ -149,7 +149,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                //alert(response.tasks[1].task_name);
                 $scope.tasks = response.tasks;
                  for( var i = 0; i < response.tasks.length; ++i){
-                    $scope.models.lists.Produktebacklogs.push({label: "Produktbacklogs " + $scope.tasks[i].task_name});
+                    $scope.models.lists.Produktebacklogs.push({label: "Produktbacklogs " + $scope.tasks[i].task_name, listId:"task"+$scope.tasks[i].task_id} );
                 }
             })
             .error(function (data, status, header, config) {
@@ -173,7 +173,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         $http.post('ajax/getjsondata.php', data, config)
             .success(function (response, status, headers, config) {
 
-                $scope.tasks = response.tasks;
+                $scope.groups = response.groups;
 
 
             })
@@ -198,7 +198,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         $http.post('ajax/getjsondata.php', data, config)
             .success(function (response, status, headers, config) {
 
-                $scope.tasks = response.tasks;
+                $scope.users = response.users;
 
 
             })
