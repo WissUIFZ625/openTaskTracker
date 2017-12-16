@@ -1,30 +1,31 @@
-var openTaskTracker_App = angular.module('openTaskTracker_App', ['ngMaterial','dndLists']);
+var openTaskTracker_App = angular.module('openTaskTracker_App', ['ngMaterial', 'dndLists']);
 //var baseUrl = 'http://localhost:54037/Home/'
 
 var mytimer;
 
 
-openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog)
-{
+openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog) {
     $scope.models = {
         selected: null,
-        lists: { "Projekte": [],"Sprints": [], "Produktebacklogs": []}
+        lists: {"Projekte": [], "Sprints": [], "Produktebacklogs": []}
     };
 
-    $scope.status =  '';
+    $scope.status = '';
     $scope.beareiter = 'Markus';
     $scope.backlogs = '';
     $scope.major = '';
+    $scope.group = '';
+    $scope.title = '';
 
 
     // Generate initial model
     for (var i = 1; i <= 20; ++i) {
-        $scope.models.lists.Produktebacklogs.push({label: "Produktebacklogs B" + i });
+        $scope.models.lists.Produktebacklogs.push({label: "Produktebacklogs B" + i});
     }
 
 
     for (var i = 1; i <= 2; ++i) {
-        $scope.models.lists.Projekte.push({label: "Projekte " + i +  $scope.beareiter});
+        $scope.models.lists.Projekte.push({label: "Projekte " + i + $scope.beareiter});
     }
 
 
@@ -33,45 +34,44 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     }
 
 
-
     // Model to JSON for demo purpose
-    $scope.$watch('models', function(model) {
+    $scope.$watch('models', function (model) {
         $scope.modelAsJson = angular.toJson(model, true);
     }, true);
 
 
     $scope.projectstatus = ('open closed running' +
-        '').split(' ').map(function(state) {
+        '').split(' ').map(function (state) {
         return {abbrev: state};
     });
 
     $scope.projectgruppe = ('Admin;Was auch immer;User' +
-        '').split(';').map(function(state) {
+        '').split(';').map(function (state) {
         return {abbrev: state};
     });
 
     $scope.tasktime = ('1;2;3;4;5;6;7;8;9' +
-        '').split(';').map(function(state) {
+        '').split(';').map(function (state) {
         return {abbrev: state};
     });
 
     $scope.taskprio = ('low;mid;hight' +
-        '').split(';').map(function(state) {
+        '').split(';').map(function (state) {
         return {abbrev: state};
     });
 
     $scope.projectbearbeiter = ('Markus Stefan Ivo' +
-        '').split(' ').map(function(state) {
+        '').split(' ').map(function (state) {
         return {abbrev: state};
     });
 
     $scope.produktbacklogs = ('Backlog1 Backlog2 Backlog3' +
-        '').split(' ').map(function(state) {
+        '').split(' ').map(function (state) {
         return {abbrev: state};
     });
 
     $scope.majorprojekt = ('majorprojekt1 majorprojekt2 majorprojekt3' +
-        '').split(' ').map(function(state) {
+        '').split(' ').map(function (state) {
         return {abbrev: state};
     });
 
@@ -80,40 +80,38 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     };
 
 
+    $scope.getCustomerData = function () {
+        // use $.param jQuery function to serialize data from JSON
+        var data = $.param({
+            target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
+            filter_str: flt
+        });
 
-	$scope.getCustomerData = function() {
-	    	 // use $.param jQuery function to serialize data from JSON
-	         var data = $.param({
-				 target_id: "CustomerDataCollection_inter", //target_id: "WebSwitchCollection"
-	             filter_str: flt
-	         });
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
 
-	         var config = {
-	             headers : {
-	                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-	             }
-	         };
+        $http.post('ajax/getjsondata.php', data, config)
+            .success(function (response, status, headers, config) {
 
-	         $http.post('ajax/getjsondata.php', data, config)
-	         .success(function (response, status, headers, config) {
+                $scope.customerdata = response.customerdata;
+                //$scope.$apply(function ()
+                //{
+                //////////$scope.shh_maildata = response.shh_maildata;
+                //});
 
-			 $scope.customerdata = response.customerdata;
-				//$scope.$apply(function ()
-				//{
-					//////////$scope.shh_maildata = response.shh_maildata;
-				//});
-
-	         })
-	         .error(function (data, status, header, config) {
-	        //alert(data);
-	         });
-	};
+            })
+            .error(function (data, status, header, config) {
+                //alert(data);
+            });
+    };
 
 
-	$scope.closeDialog = function()
-	{
-		$mdDialog.hide();
-	};
+    $scope.closeDialog = function () {
+        $mdDialog.hide();
+    };
 
 
     $scope.showNewProjectDialog = function () {
@@ -624,8 +622,8 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                 .ok('OK')
         );
     };
-    $scope.getTasks =function (){
-        flt.type ="allTasks";
+    $scope.getTasks = function () {
+        flt.type = "allTasks";
         // use $.param jQuery function to serialize data from JSON
         var data = $.param({
             target_id: "ProjectCollection", //target_id: "WebSwitchCollection"
@@ -640,11 +638,35 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
         $http.post('ajax/getjsondata.php', data, config)
             .success(function (response, status, headers, config) {
-                flt.type='';
+                flt.type = '';
                 $scope.webswitches = response.webswitches;
             })
             .error(function (data, status, header, config) {
                 //alert(data);
             });
     }
+
+    $scope.addNewProject = function () {
+
+
+        $.ajax({
+            type: 'POST',
+            url: 'asdasda.php',
+            data: {
+                group: $scope.group,
+                title: $scope.title
+            },
+            success: function (data) {
+
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+
+        })
+
+    }
+
 });

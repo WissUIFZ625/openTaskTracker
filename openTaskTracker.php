@@ -326,7 +326,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                 </md-dialog-content>
                 <md-dialog-actions>
                     <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
-                    <md-button class="md-primary" ng-click="closeDialog()" id="save_new_project">Speichern
+                    <md-button class="md-primary" ng-click="closeDialog();" id="save_new_project">Speichern
                     </md-button>
                 </md-dialog-actions>
             </form>
