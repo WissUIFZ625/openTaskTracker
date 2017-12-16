@@ -131,6 +131,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
 
     $scope.getTasks =function (){
+        flt = new Object();
         flt.type ="allTasks";
         // use $.param jQuery function to serialize data from JSON
         var data = $.param({
@@ -148,13 +149,11 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             .success(function (response, status, headers, config) {
                //alert(response.tasks[1].task_name);
                 $scope.tasks = response.tasks;
+
                  for( var i = 0; i < $scope.tasks.length; ++i) {
-                     if (!$scope.tasks[i].task_tst_id != 3) {
+                     if ($scope.tasks[i].task_tst_id != 3) {
                          if (!$scope.tasks[i].task_spr_id) {
-                             $scope.models.lists.Produktebacklogs.push({
-                                 label: "Produktbacklogs " + $scope.tasks[i].task_name,
-                                 listId: "task" + $scope.tasks[i].task_id
-                             });
+                             $scope.models.lists.Produktebacklogs.push({label: "Produktbacklogs " + $scope.tasks[i].task_name, listId: "task" + $scope.tasks[i].task_id});
                          }
                          else if ($scope.tasks[i].task_spr_id) {
                              $scope.models.lists.Sprints.push({

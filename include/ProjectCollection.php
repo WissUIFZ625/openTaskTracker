@@ -55,7 +55,17 @@ class ProjectCollection extends openTaskTrackerSnippet
                 $this->json = $frt;
             }
                 break;
+            case"sprint": {
+                $statement = $this->pdo->prepare("SELECT * FROM Sprint");
+                $statement->execute();
+                $project = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $devjson = array();
+                $devjson["sprints"] = $project;
 
+                $frt = json_encode($devjson);
+                $this->json = $frt;
+            }
+                break;
             case"group": {
                 $statement = $this->pdo->prepare("SELECT * FROM `Group`");
                 $statement->execute();
