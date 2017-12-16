@@ -1,7 +1,7 @@
 <?php
 require_once (realpath(dirname(__FILE__)."/pdoinit.php"));
 require_once (realpath(dirname(__FILE__)."/ProjectCollection.php"));
-echo(realpath(dirname(__FILE__)."/ProjectCollection.php"));
+
 
 
 

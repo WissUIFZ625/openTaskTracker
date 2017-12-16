@@ -19,53 +19,10 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     $scope.major = '';
 
 
-    $scope.tasks = {
-        selected: null,
-        lists: { "Produktebacklogs": [], "Sprints": [], "Archiv": []},
-        blog_id: '',
-        blog_pro_id: '',
-        grp_id:'',
-        grp_name:'',
-        is_register_user:'',
-        pri_id:'',
-        pri_priority:'',
-        pro_grp_id:'',
-        pro_id:'',
-        pro_name:'',
-        pro_pst_id:'',
-        pst_id:'',
-        pst_projectstatus:'',
-        spr_blog_id:'',
-        spr_id:'',
-        tag_id:'',
-        tag_tag:'',
-        task_actTime:'',
-        task_alloTime:'',
-        task_blog_id:'',
-        task_description:'',
-        task_id:'',
-        task_name:-1,
-        task_pri_id:'',
-        task_spr_id:'',
-        task_tst_id:'',
-        tit_id:'',
-        tit_tag_id:'',
-        tit_task_id:'',
-        tst_id:'',
-        tst_taskstatus:'',
-        usr_aut_id:'',
-        usr_id:'',
-        usr_name:'',
-        usr_password:'',
-        usr_salt:'',
-        usrgrp_grp_id:'',
-        usrgrp_id:'',
-        usrgrp_usr_id:''
-    }
+    $scope.tasks = '';
 
 
     // Generate initial model
-        $scope.models.lists.Produktebacklogs.push({label:"Produktbacklogs " +$scope.tasks.task_name },{label:"Produktbacklogs" });
 
 
 
@@ -189,8 +146,11 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
         $http.post('ajax/getjsondata.php', data, config)
             .success(function (response, status, headers, config) {
-                //flt.type='';
+               //alert(response.tasks[1].task_name);
                 $scope.tasks = response.tasks;
+                 for( var i = 0; i < response.tasks.length; ++i){
+                    $scope.models.lists.Produktebacklogs.push({label: "Produktbacklogs " + $scope.tasks[i].task_name});
+                }
             })
             .error(function (data, status, header, config) {
                 //alert(data);
