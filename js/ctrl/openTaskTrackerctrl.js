@@ -148,8 +148,8 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
             .success(function (response, status, headers, config) {
                //alert(response.tasks[1].task_name);
                 $scope.tasks = response.tasks;
-                for( var i = 0; i <= response.tasks.length; ++i){
-                    $scope.models.lists.Produktebacklogs.push({label: "Produktbacklogs " + $scope.tasks[i].task_name}, {label: "Produktbacklogs"});
+                 for( var i = 0; i < response.tasks.length; ++i){
+                    $scope.models.lists.Produktebacklogs.push({label: "Produktbacklogs " + $scope.tasks[i].task_name});
                 }
             })
             .error(function (data, status, header, config) {
