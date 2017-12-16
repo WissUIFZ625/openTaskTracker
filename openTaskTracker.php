@@ -80,6 +80,20 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="showNewTaskDialog()">New Task</md-button>
         <md-button class="md-raised md-warn" ng-click="showNewProjectDialog()">New Projekt</md-button>
+        <md-dialog-actions
+                ng-show="displayvieu === 4">
+            <md-button class="md-raised "
+                       ng-click="displayvieu = 12">
+                Default
+            </md-button>
+        </md-dialog-actions>
+        <md-dialog-actions
+                ng-show="displayvieu === 12">
+            <md-button class="md-raised "
+                       ng-click="displayvieu = 4">
+                Kanban
+            </md-button>
+        </md-dialog-actions>
         <span flex></span>
     </md-content>
 </div>
@@ -118,7 +132,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                 ng-hide="showSaveButton">
 
                 <label style="margin-top: 20px;">
-                    Select your Filter
+                    Wähle deine Filter
                 </label>
 
         </md-dialog-actions>
@@ -148,9 +162,9 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
 
 
 <div class="simpleDemo row ">
-    <div class="col-sm-12 ">
+    <div class="col-sm-12 middle">
         <div class="row ">
-            <div ng-repeat="(listName, list) in models.lists" class="col-md-12 middle content">
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-{{displayvieu}}  content">
                 <div class="panel panel-info ">
                     <div class="panel-heading ">
                         <h3 class="panel-title ">{{listName}}</h3>
@@ -166,6 +180,26 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
         </div>
     </div>
 </div>
+
+<!--<div class="simpleDemo row ">
+    <div class="col-sm-12 middle">
+        <div class="row ">
+            <div ng-repeat="(listName, list) in tasks.lists" class="col-md-{{displayvieu}}  content">
+                <div class="panel panel-info ">
+                    <div class="panel-heading ">
+                        <h3 class="panel-title ">{{listName}}</h3>
+                    </div>
+                    <div class="panel-body " ng-include="'simple/tasks.html'"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div view-source="simple">
+
+        </div>
+    </div>
+--></div>
 
 
 <div style="visibility: hidden">
@@ -351,10 +385,35 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                 </md-toolbar>
                 <md-dialog-content>
 
-                   <!--Hier kommt mein Dialog-->
+                    <div layout-sm="row" layout-align="start" layout-margin>
+                        <div>
+                            <md-input-container class="md-block">
+                                <input flex="100" type="text" id="inp_User"
+                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                       placeholder="User" data-toggle="tooltip"
+                                       title="User"
+                                       name="select_user" ng-model="group"  ng-required="true"
+                                       data-original-title="User">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div layout-sm="row" layout-align="start" layout-margin>
+                        <div>
+                            <md-input-container class="md-block">
+                                <input flex="100" type="text" id="inp_Group"
+                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                       placeholder="Gruppe" data-toggle="tooltip"
+                                       title="Beschrieb"
+                                       name="add_group" ng-model="group"  ng-required="true"
+                                       data-original-title="Beschrieb">
+                            </md-input-container>
+                        </div>
+                    </div>
+
                 <md-dialog-actions>
                     <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
-                    <md-button class="md-primary" ng-click="closeDialog()" id="save_settings">Speichern
+                    <md-button class="md-primary" ng-click="closeDialog()" id="save_settings">Gruppe zuweisen
                     </md-button>
                 </md-dialog-actions>
             </form>

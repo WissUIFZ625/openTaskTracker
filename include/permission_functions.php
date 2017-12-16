@@ -10,16 +10,16 @@ $sites_permission = unserialize (SITES);
 function isAdmin ($pdo, $user_id)
 {
 
-	$stmt = $pdo->prepare("SELECT usr_id, usr_name, usr_aut_id FROM User WHERE usr_id = :USERID");
+	$stmt = $pdo->prepare("SELECT usr_id, usr_name, is_register_user FROM User WHERE usr_id = :USERID");
 	$stmt->bindParam(':USERID', $user_id);
 	$stmt->execute();
 
 	$dbresult = $stmt->fetch(PDO::FETCH_ASSOC);
 
 	if($dbresult){
-		$admin = $dbresult['usr_aut_id'];
+        $is_register_user = $dbresult['is_register_user'];
 
-        if($admin==1){
+        if($is_register_user==1){
                 return true;
             }
 	}
