@@ -50,3 +50,7 @@ body{
     background-color: #dff0d8;
     color: #3c763d;
 }
+
+.flexwith{
+    flex: 20%;
+}

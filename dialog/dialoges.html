@@ -1,0 +1,232 @@
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newProject">
+        <md-dialog aria-label="Neues Projekt erstellen ...">
+
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Neues Projekt erstellen</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                    <md-tabs md-dynamic-height="true">
+                        <md-tab>
+
+                            <md-tab-body>
+                                <div layout="column">
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block">
+                                                <input flex="100" type="text" id="inp_projekt_titel"
+                                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                       placeholder="Projekt Titel" data-toggle="tooltip"
+                                                       title="Titel"
+                                                       name="projekt_titel" ng-model="projekt.titel"  ng-required="true"
+                                                       data-original-title="Titel">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <input hidden id="inp_group" ng-model="projekt.group">
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Projectstatus</label>
+                                                <md-select  id="inp_group_angular" ng-required="true"
+                                                            ng-model="projekt.group">
+                                                    <md-option ng-repeat="group in groups" value="{{group.grp_id[$index]}}">
+                                                        {{group.grp_name}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <input hidden id="inp_status" ng-model="projekt.status">
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Projectstatus</label>
+                                                <md-select  id="inp_status_angular" ng-required="true"
+                                                            ng-model="projekt.status">
+                                                    <md-option ng-repeat="projectstate in projectstatus" value="{{$index +1}}">
+                                                        {{projectstate.abbrev}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </md-tab-body>
+
+                        </md-tab>
+
+                    </md-tabs>
+                </md-dialog-content>
+                <md-dialog-actions>
+                    <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                    <md-button class="md-primary" ng-click="closeDialog();" id="save_new_projekt">Speichern
+                    </md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="newTaskProject">
+        <md-dialog aria-label="Neuer Task erstellen...">
+
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Neues Task erstellen</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                    <md-tabs md-dynamic-height="true">
+                        <md-tab>
+
+                            <md-tab-body>
+                                <div layout="column">
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block">
+                                                <input flex="100" type="text" id="inp_task_titel"
+                                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                       placeholder="Task Titel" data-toggle="tooltip"
+                                                       title="Titel"
+                                                       name="task_titel" ng-model="task.titel"  ng-required="true"
+                                                       data-original-title="Titel">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <md-input-container class="md-block">
+                                                <input flex="100" type="text" id="inp_beschrieb_titel"
+                                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                                       placeholder="Task Beschrieb" data-toggle="tooltip"
+                                                       title="Beschrieb"
+                                                       name="task_beschrieb" ng-model="task.beschreieb"  ng-required="true"
+                                                       data-original-title="Beschrieb">
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                    <!-- <div layout-sm="row" layout-align="start" layout-margin>
+                                         <div>
+                                             <md-input-container class="md-block" flex="100">
+                                                 <label>Bearbeitungszeit SOLL</label>
+                                                 <md-select  id="inp_time" ng-required="true"
+                                                             ng-model="task.time">
+                                                     <md-option ng-repeat="time in tasktime" value="{{time.abbrev}}">
+                                                         {{time.abbrev}}
+                                                     </md-option>
+                                                 </md-select>
+                                             </md-input-container>
+                                         </div>
+                                     </div>-->
+                                    <div layout-sm="row" layout-align="start" layout-margin>
+                                        <div>
+                                            <input hidden id="inp_prio" ng-model="task.prio">
+                                            <md-input-container class="md-block" flex="100">
+                                                <label>Priorität</label>
+                                                <md-select  id="inp_prio_angular" ng-required="true"
+                                                            ng-model="task.prio">
+                                                    <md-option ng-repeat="prio in taskprio" value="{{$index+1}}">
+                                                        {{prio.abbrev}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </md-tab-body>
+
+                        </md-tab>
+
+                    </md-tabs>
+                </md-dialog-content>
+                <md-dialog-actions>
+                    <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                    <md-button class="md-primary" id="save_new_task">Speichern
+                    </md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </div>
+</div>
+
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="openSettings">
+        <md-dialog aria-label="Settings">
+
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Settings</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                    <div layout-sm="row" layout-align="start" layout-margin>
+                        <div>
+                            <md-input-container class="md-block">
+                                <label>User</label>
+                                <md-select id="select_user"
+                                           ng-model="selectet_user">
+                                    <md-option ng-repeat="user in users" value="{{user.usr_name}}">
+                                        {{user.usr_name}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div layout-sm="row" layout-align="start" layout-margin>
+                        <div>
+                            <md-input-container class="md-block">
+                                <label>Gruppe</label>
+                                <md-select ng-change="showSaveButton = true"
+                                           ng-model="major">
+                                    <md-option ng-repeat="group in groups" value="{{group.grp_name}}">
+                                        {{group.grp_name}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <md-dialog-actions>
+                        <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                        <md-dialog-actions
+                                ng-click="ngfilterdiv = false; showSaveButton = false" ng-show="groups.grp_name == empty">
+                            <md-button class="md-primary" ng-click="closeDialog()" id="create_group">Gruppe erstellen
+                            </md-button>
+                        </md-dialog-actions>
+                        <md-dialog-actions
+                                ng-click="ngfilterdiv = false; showSaveButton = false" ng-show="groups.grp_name == empty && groups.grp_name != null">
+                            <md-button class="md-primary" ng-click="closeDialog()" id="add_group">Gruppe zuweisen
+                            </md-button>
+                        </md-dialog-actions>
+
+                    </md-dialog-actions>
+            </form>
+        </md-dialog>
+    </div>
+</div>

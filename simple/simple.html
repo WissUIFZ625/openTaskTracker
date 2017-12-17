@@ -7,7 +7,7 @@
              transfer the object that was assigned to it. If an element was
              dragged away, you have to remove it from the original list
              yourself using the dnd-moved attribute -->
-        <li ng-repeat="item in list"
+        <li ng-repeat="item in list | filter: tasktosearch"
             dnd-draggable="item"
             id="{{item.listId}}"
             dnd-moved="list.splice($index, 1)"
