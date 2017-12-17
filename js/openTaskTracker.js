@@ -56,7 +56,6 @@ $(document).ready(function () {
         var group = $("#inp_group").val();
         var state = $("#inp_status").val();
 
-        alert($("#inp_group").val());
 
         scopetmp.closeDialog();
 
@@ -81,13 +80,54 @@ $(document).ready(function () {
 
             }).done(function(result)
             {
-                scopetmp.message('Das neue Projekt wurde gespeichert', 'Die Projekte können Sie nur unter den Filtern sehen')
+                scopetmp.message('Das neue Projekt wurde gespeichert', 'Es wurde ein Backlog für diese Projekt erstellt')
                 setTimeout(function() { scopetmp.clear();}, 2000);
 
             });
         }else
         {
             scopetmp.message('Projekt konnte nicht erstellt werden', 'Wurden sämtliche Pflichtfelder ausgefüllt')
+        }
+
+    });
+
+    $("body").on("click", "#insert_new_group", function(e) {
+
+        var groupname = $("#inp_new_group_name").val();
+
+
+        scopetmp.closeDialog();
+
+        if (groupname) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'ajax/insert_new_group.php',
+                data: {
+                    groupname: groupname,
+
+                },
+                success: function (data) {
+
+                    scopetmp.message('Die neue Gruppe wurde erstellt', 'Sie können nun User der Gruppe hinzufügen')
+
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                },
+
+            }).done(function(result)
+            {
+
+                scopetmp.getGroup();
+
+
+            });
+        }else
+        {
+            scopetmp.message('Es wurd keine neue Gruppe erstellt', 'Eine Gruppe ohne Namen kann nicht existieren')
         }
 
     });

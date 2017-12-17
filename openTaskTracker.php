@@ -65,7 +65,33 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
         <div class="md-toolbar-tools">
             <md-truncate>OpenTaskTracker</md-truncate>
             <span flex></span>
-            <a style="color:white;" id="settings" ng-click="showSettings()"><?php echo htmlentities($_SESSION['username']); ?></a>
+            <md-menu md-offset="30 35">
+            <a style="color:white;" id="settings" ng-click="$mdMenu.open($event)"><?php echo htmlentities($_SESSION['username']); ?></a>
+
+                <md-menu-content>
+
+                    <md-menu-item id="new_group">
+                        <md-button ng-click="showDialoges('opennewgroup')">Neue Gruppe erstellen</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item id="new_group">
+                        <md-button ng-click="showDialoges('openaddGroup')">User Gruppe zuweisen</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item id="new_projekt">
+                        <md-button ng-click="showDialoges('newProject')">Neues Projekt</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item id="new_projekt">
+                        <md-button ng-click="test()">Neuer Benutzer erstellen</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item id="new_sprint">
+                        <md-button ng-click="test()">Neuer Sprint </md-button>
+                    </md-menu-item>
+
+                </md-menu-content>
+            </md-menu>
             <span flex="5"></span>
             <a style="color:white; " href="include/process_logout.php">Logout</a>
         </div>
@@ -75,9 +101,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
 <div class="buttonbar">
     <md-content layout-gt-md="row">
         <span flex></span>
-        <md-button class="md-raised md-primary" ng-click="showNewTaskDialog()">New Task</md-button>
-
-
+        <md-button class="md-raised md-primary" ng-click="showDialoges('newTaskProject')">New Task</md-button>
 
 
         <md-dialog-actions class="screenhidden"
@@ -113,7 +137,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
             </md-button>
         </md-dialog-actions>
 
-        <!--Vorläufig auskommentiert, ist später erweiterbar ist aber implementiert und funktionsfähig-->
+        <!--Vorläufig auskommentiert, wurde hinter username hinterlegt-->
        <!-- <md-button class="md-raised md-warn" ng-click="showNewProjectDialog()">New Projekt</md-button>-->
         <span flex></span>
     </md-content>
@@ -154,12 +178,21 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
             </md-select>
         </md-input-container>
         <span flex></span>
-        <md-input-container class="md-block flexwith" flex>
+        <!--<md-input-container class="md-block flexwith" flex>
             <label>Gruppe</label>
             <md-select ng-change="showSaveButton = true"
                        ng-model="major">
                 <md-option ng-repeat="group in groups" value="{{group.grp_name}}">
                     {{group.grp_name}}
+                </md-option>
+            </md-select>
+        </md-input-container>-->
+        <md-input-container class="md-block flexwith" flex>
+            <label>Tasks</label>
+            <md-select ng-change="showSaveButton = true"
+                       ng-model="tasktosearch[i].task_name">
+                <md-option ng-repeat="task in tasks" value="{{task.task_name}}">
+                    {{task.task_name}}
                 </md-option>
             </md-select>
         </md-input-container>

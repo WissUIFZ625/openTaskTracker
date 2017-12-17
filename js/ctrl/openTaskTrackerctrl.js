@@ -1,8 +1,6 @@
 var openTaskTracker_App = angular.module('openTaskTracker_App', ['ngMaterial','dndLists']);
 //var baseUrl = 'http://localhost:54037/Home/'
 
-var mytimer;
-
 
 openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, $mdDialog)
 {
@@ -21,7 +19,8 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
     $scope.tasks = '';
     $scope.users = '';
-    $scope.projects = ''
+    $scope.projects = '';
+    $scope.groups = '';
 
 
 
@@ -37,25 +36,9 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
         return {abbrev: state};
     });
 
-    /*$scope.projectgruppe = ('Admin;Was auch immer;User' +
-        '').split(';').map(function(state) {
-        return {abbrev: state};
-    });*/
-/*
-    $scope.tasktime = ('1;2;3;4;5;6;7;8;9' +
-        '').split(';').map(function(state) {
-        return {abbrev: state};
-    });*/
 
     $scope.taskprio = ('low;mid;hight' +
         '').split(';').map(function(state) {
-        return {abbrev: state};
-    });
-
-
-
-    $scope.produktbacklogs = ('Backlog1 Backlog2 Backlog3' +
-        '').split(' ').map(function(state) {
         return {abbrev: state};
     });
 
@@ -67,42 +50,15 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
 
 
 
-
-	$scope.closeDialog = function()
-	{
-		$mdDialog.hide();
-	};
-
-
-    $scope.showNewProjectDialog = function () {
+    $scope.showDialoges = function (id_dialog) {
+        var dialog_id =id_dialog;
         $mdDialog.show({
-            contentElement: '#newProject',
+            contentElement: '#'+dialog_id,
             parent: angular.element(document.body),
             clickOutsideToClose: true,
             escapeToClose: true
         });
     };
-    $scope.showNewTaskDialog = function () {
-        $mdDialog.show({
-            contentElement: '#newTaskProject',
-            parent: angular.element(document.body),
-            clickOutsideToClose: true,
-            escapeToClose: true
-        });
-    };
-
-    $scope.showSettings = function () {
-        $scope.getUser();
-        $scope.getGroup();
-        $mdDialog.show({
-            contentElement: '#openSettings',
-            parent: angular.element(document.body),
-            clickOutsideToClose: true,
-            escapeToClose: true
-        });
-    };
-
-
 
 
 
@@ -136,20 +92,20 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                      if ($scope.tasks[i].task_tst_id != 3) {
                          if (!$scope.tasks[i].task_spr_id) {
                              $scope.models.lists.Produktebacklogs.push({
-                                 label: "Produktbacklogs " + $scope.tasks[i].task_name,
+                                 label: "Titel: " + $scope.tasks[i].task_name,
                                  listId: "task_" + $scope.tasks[i].task_id
                              });
                          }
                          else if ($scope.tasks[i].task_spr_id) {
                              $scope.models.lists.Sprints.push({
-                                 label: "Sprint " + $scope.tasks[i].task_name,
-                                 listId: "task" + $scope.tasks[i].task_id
+                                 label: "Titel: " + $scope.tasks[i].task_name,
+                                 listId: "task_" + $scope.tasks[i].task_id
                              });
                          }
                      }
                      if($scope.tasks[i].task_tst_id == 3) {
                          $scope.models.lists.Archiv.push({
-                             label: "Archiv " + $scope.tasks[i].task_name,
+                             label: "Titel: " + $scope.tasks[i].task_name,
                              listId: "task_" + $scope.tasks[i].task_id
                          });
 
@@ -271,6 +227,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     $scope.clear = function () {
         location.reload();
     }
+
 
 
     $scope.message = function (titel,subtitel) {

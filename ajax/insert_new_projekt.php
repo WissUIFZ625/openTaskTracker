@@ -42,7 +42,30 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
     if ($stmt->execute()) {
 
-      $output = true;
+        $stmt = $pdo->prepare
+        (
+            "SELECT pro_id FROM project WHERE pro_name = :TITEL LIMIT 1"
+        );
+        $stmt->bindParam(':TITEL', $titel);
+
+        $db_result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id_projekt = $db_result['pro_id'];
+
+        if ($db_result != false) {
+
+            $stmt = $pdo->prepare
+            (
+                "INSERT INTO backlog (blog_pro_id) VALUES (:IDPROJEKT)"
+            );
+            $stmt->bindParam(':IDPROJEKT', $id_projekt);
+
+            if ($stmt->execute()) {
+
+                $output = true;
+            }
+
+        }
+
 
     }
 
