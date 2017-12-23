@@ -92,12 +92,14 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                      if ($scope.tasks[i].task_tst_id != 3) {
                          if (!$scope.tasks[i].task_spr_id) {
                              $scope.models.lists.Produktebacklogs.push({
+                                 classname:"produktebacklog",
                                  label: "Titel: " + $scope.tasks[i].task_name,
                                  listId: "task_" + $scope.tasks[i].task_id
                              });
                          }
                          else if ($scope.tasks[i].task_spr_id) {
                              $scope.models.lists.Sprints.push({
+                                 classname:"sprint",
                                  label: "Titel: " + $scope.tasks[i].task_name,
                                  listId: "task_" + $scope.tasks[i].task_id
                              });
@@ -105,6 +107,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
                      }
                      if($scope.tasks[i].task_tst_id == 3) {
                          $scope.models.lists.Archiv.push({
+                             classname:"archive",
                              label: "Titel: " + $scope.tasks[i].task_name,
                              listId: "task_" + $scope.tasks[i].task_id
                          });

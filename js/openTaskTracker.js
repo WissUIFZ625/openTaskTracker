@@ -176,3 +176,14 @@ $(document).ready(function () {
 
 
 });
+function drag(ev){
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function dropped(ev){
+    ev.preventDefault();
+    ev.stopPropagation();
+    var data = ev.dataTransfer.getData("text");
+alert(ev.target.id+' + '+data);
+
+}

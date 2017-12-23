@@ -209,7 +209,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                     <div class="panel-heading ">
                         <h3 class="panel-title ">{{listName}}</h3>
                     </div>
-                    <div class="panel-body " ng-include="'simple/simple.html'"></div>
+                    <div class="panel-body {{listName}}" ng-include="'simple/simple.html'" ondrop="dropped(event)"></div>
 
                 </div>
             </div>
