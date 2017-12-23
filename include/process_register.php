@@ -63,7 +63,7 @@ if (isset($_POST['username'], $_POST['p'])) {
             $password = hash('sha512', $password . $random_salt);
 
             // Insert the new user into the database
-            if ($insert_stmt = $pdo->prepare("INSERT INTO User (usr_name, usr_password, usr_salt, is_register_user = 1) VALUES (:USERNAME, :PASSWORD , :SALT)")) {
+            if ($insert_stmt = $pdo->prepare("INSERT INTO User (usr_name, usr_password, usr_salt, usr_aut_id , is_register_user ) VALUES (:USERNAME, :PASSWORD , :SALT, null, 1)")) {
                 $isBatman = 1;
                 $insert_stmt->bindParam(':USERNAME', $username);
                 $insert_stmt->bindParam(':PASSWORD', $password);
