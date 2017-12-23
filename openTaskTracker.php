@@ -151,7 +151,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
             <label>Projectstatus</label>
             <md-select ng-change="showSaveButton = true"
                        ng-model="tasktosearch.task_tst_id">
-                <md-option ng-repeat="projectstate in projectstatus" value="{{$index +1}}">
+                <md-option ng-repeat="projectstate in projectstatus" value="{{projectstate.value}}">
                     {{projectstate.abbrev}}
                 </md-option>
             </md-select>

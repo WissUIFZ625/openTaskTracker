@@ -16,6 +16,7 @@
             ondrop="dropped(event)"
             ondragstart="drag(event)"
             ng-class="{'selected': models.selected === item}"
+            ng-dblclick="showDialoges('updateTaskProject'); getSprint(); getTask_id(this)"
         >
             {{item.label}}
         </li>

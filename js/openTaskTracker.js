@@ -181,6 +181,9 @@ function drag(ev){
 }
 
 function dropped(ev){
+
+    scopetmp.showDialoges('updateTaskProject');
+    scopetmp.getSprint();
     ev.preventDefault();
     ev.stopPropagation();
     var data = ev.dataTransfer.getData("text");
