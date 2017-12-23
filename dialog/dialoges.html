@@ -118,8 +118,6 @@
                                                        name="task_beschrieb" ng-model="task.beschreieb"  ng-required="true"
                                                        data-original-title="Beschrieb">
                                             </md-input-container>
-                                        </div>
-                                    </div>
                                     <!-- <div layout-sm="row" layout-align="start" layout-margin>
                                          <div>
                                              <md-input-container class="md-block" flex="100">
@@ -219,6 +217,7 @@
                         </md-dialog-actions>
 
                     </md-dialog-actions>
+                </md-dialog-content>
             </form>
         </md-dialog>
     </div>
@@ -263,6 +262,69 @@
                         </md-dialog-actions>
 
                     </md-dialog-actions>
+                </md-dialog-content>
+            </form>
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="opennewSprint">
+        <md-dialog aria-label="Settings">
+
+            <form name="virtForm" ng-cloak class="projectdialog">
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Neuen Sprint erstellen</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="closeDialog()">
+                            <img src="image/close.png" aria-label="Close dialog" class="ng-scope close">
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content>
+
+                    <div layout-sm="row" layout-align="start" layout-margin>
+                        <div>
+                            <md-input-container class="md-block">
+                                <input flex="100" type="text" id="inp_new_sprint_name"
+                                       class="form-control pull-left col-md-8 input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                       placeholder="Neuen Sprint erstellen" data-toggle="tooltip"
+                                       title="Neuen Sprint erstellen"
+                                       name="task_beschrieb" ng-model="sprint.newsprint"  ng-required="true"
+                                       data-original-title="Beschrieb">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+
+                    <div layout-sm="row" layout-align="start" layout-margin>
+                        <div>
+                            <input hidden id="inp_add_projekt_sprint" ng-model="projekt.sprint.value">
+                            <md-input-container class="md-block" flex="100">
+                                <label>Projekt</label>
+                                <md-select  id="inp_add_projekt_sprint_angular" ng-required="true"
+                                            ng-model="projekt.sprint.value">
+                                    <md-option ng-repeat="project in projects" value="{{project.pro_id}}">
+                                        {{project.pro_name}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+
+                    <md-dialog-actions>
+                        <md-button class="md-primary" ng-click="closeDialog()">Abbrechen</md-button>
+                        <md-dialog-actions>
+                            <md-button class="md-primary" ng-click="closeDialog()" id="insert_new_sprint">Neuen Sprint erstellen
+                            </md-button>
+                        </md-dialog-actions>
+
+                    </md-dialog-actions>
+                </md-dialog-content>
             </form>
         </md-dialog>
     </div>
