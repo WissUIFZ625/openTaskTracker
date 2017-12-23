@@ -34,7 +34,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
        return;*/
     $stmt = $pdo->prepare
     (
-        "INSERT INTO project (pro_name, pro_grp_id, pro_pst_id) VALUES (:TITEL, :GROUP, :STATE)"
+        "INSERT INTO Project (pro_name, pro_grp_id, pro_pst_id) VALUES (:TITEL, :GROUP, :STATE)"
     );
     $stmt->bindParam(':TITEL', $titel);
     $stmt->bindParam(':GROUP', $group);
@@ -44,7 +44,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
         $stmt = $pdo->prepare
         (
-            "SELECT pro_id FROM project WHERE pro_name = :TITEL LIMIT 1"
+            "SELECT pro_id FROM Project WHERE pro_name = :TITEL LIMIT 1"
         );
         $stmt->bindParam(':TITEL', $titel);
 
@@ -57,7 +57,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
             $stmt = $pdo->prepare
             (
-                "INSERT INTO backlog (blog_pro_id) VALUES (:IDPROJEKT)"
+                "INSERT INTO Backlog (blog_pro_id) VALUES (:IDPROJEKT)"
             );
             $stmt->bindParam(':IDPROJEKT', $id_projekt);
 
@@ -65,7 +65,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
                 $stmt = $pdo->prepare
                 (
-                    "SELECT blog_id FROM backlog WHERE blog_pro_id = :IDPROJEKT LIMIT 1"
+                    "SELECT blog_id FROM Backlog WHERE blog_pro_id = :IDPROJEKT LIMIT 1"
                 );
                 $stmt->bindParam(':IDPROJEKT', $id_projekt);
 
@@ -78,7 +78,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
                     $stmt = $pdo->prepare
                     (
-                        "INSERT INTO sprint (spr_blog_id, spr_name) VALUES (:IDBACKLOG, 'Sprint 1')"
+                        "INSERT INTO Sprint (spr_blog_id, spr_name) VALUES (:IDBACKLOG, 'Sprint 1')"
                     );
                     $stmt->bindParam(':IDBACKLOG', $id_backlog);
 

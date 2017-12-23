@@ -25,7 +25,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 ) {
     $stmt = $pdo->prepare
     (
-        "INSERT INTO `group` (grp_id, `grp_name`) VALUES (NULL, :GROUPNAME)"
+        "INSERT INTO `Group` (grp_id, `grp_name`) VALUES (NULL, :GROUPNAME)"
     );
     $stmt->bindParam(':GROUPNAME', $groupname);
 

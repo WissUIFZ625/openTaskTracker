@@ -34,7 +34,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 ) {
     $stmt = $pdo->prepare
     (
-        "INSERT INTO task (task_name, task_description, task_pri_id, task_tst_id) VALUES (:TITEL, :DESCRIPTION, :PRIO, 1)"
+        "INSERT INTO Task (task_name, task_description, task_pri_id, task_tst_id) VALUES (:TITEL, :DESCRIPTION, :PRIO, 1)"
     );
     $stmt->bindParam(':TITEL', $titel);
     $stmt->bindParam(':DESCRIPTION', $description);
