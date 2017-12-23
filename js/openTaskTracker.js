@@ -142,6 +142,10 @@ function dropped(ev){
     ev.preventDefault();
     ev.stopPropagation();
     var data = ev.dataTransfer.getData("text");
-alert(ev.target.id+' + '+data);
+    var $tar = $(ev.target);
+        if($tar.is("li")){
+        tar=$tar.parent("ul").attr('id');
+        }
+
 
 }
