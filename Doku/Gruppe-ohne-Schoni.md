@@ -47,7 +47,7 @@ Gui
 | 17_Filter                 | User kann nach Bearbeiter filtern                                    |
 | 18_Filter                 | User kann nach Projekt filtern                                       |
 | 19_Filter                 | User kann nach Major - Project filtern                               |
-| 21_Filter                 | User kann nach einem Sprint filtern                                  |                   |
+| 21_Filter                 | User kann nach einem Sprint filtern                                  |
 
 
 
@@ -68,21 +68,21 @@ Was sind Aktzeptanzkriterien?
 | 05_Major Project          | Ein Task kann einem Major Project hinterlegt werden.                                                                 |
 | 06_Producktebacklogs      | Es können mehrere Projektbacklogs erstellt werden                                                                    |
 | 07_Sprints                | Im Dashboard werden die einzelnen Sprints angezeigt                                                                  |
-| 08_Task (Titel)           | User kann einem Task einen Titel geben.                                                                              |
-| 09_Task (Bearbeiter)      | User kann einen Task einem Bearbeiter (User) zuordnen                                                                |
-| 10_Task (Beschreibung)    | Ersteller kann eine detaillierte Beschreibung einem Task hinterlegen                                                 |
-| 11_Task (SOLL-Zeit)       | User kann eine geplante Zeit hinterlegen                                                                             |
-| 12_Task (IST-Zeit)        | User kann die benötigte (IST-ZEIT) einem Task hinterlegen                                                            |
-| 13_Task (Sprint)          | User kann einen Task einem Sprint zuordnen                                                                           |
-| 14_Task (Projekt)         | User kann einen Task einem Projekt zuordnen                                                                          |
-| 15_Task (Major - Project) | User kann einen Task einem Epic Projekt zuordnen                                                                     |
-| 16_Task (Status)          | User kann einem Task folgende Status geben Open → Do → Test → Done                                                   |
+| 08_Task (Titel)           | Mittels Text Eingabe kann ein User einen neuen Task einen Titel gebende                                              |
+| 09_Task (Bearbeiter)      | User kann einen Task einem Bearbeiter definieren der diesen Task ausführen wird                                      |
+| 10_Task (Beschreibung)    | Mittels Text Eingabe kann ein User eine Beschreibung hinterlegen                                                     |
+| 11_Task (SOLL-Zeit)       | Mitts Nummer Eingabe von Zahlen kann ein User eine geplante Zeit hinterlegen                                         |
+| 12_Task (IST-Zeit)        | Mitts Nummer Eingabe von Zahlen kann ein User eine geplante Zeit hinterlegen                                         |
+| 13_Task (Sprint)          | Als User kann ich einen Task einem Sprint zuordnen                                                                   |
+| 14_Task (Projekt)         | Als User kann einen Task einem Projekt zuordnen                                                                      |
+| 15_Task (Major - Project) | Als User kann einen Task einem Epic Projekt zuordnen                                                                 |
+| 16_Task (Status)          | Als User kann einem Task folgende Status geben: Open → Do → Test → Done                                              |
 | 17_Filter                 | User kann nach Bearbeiter filtern                                                                                    |
 | 18_Filter                 | User kann nach Projekt filtern                                                                                       |
 | 19_Filter                 | User kann nach Major - Project filtern                                                                               |
 | 21_Filter                 | User kann nach einem Sprint filtern                                                                                  |
 
-
+## 
 
 **Task erstellen** 
 
@@ -109,13 +109,14 @@ Kiss Prinzip
 
 
 
-## Sprint 
+## **Sprint** 
 
 Wir werden die einzeln Sprint folgendermaßen umsetzten:
 
 **Sprint 1** 
 
   02.12.2017 bis 02.12.2017
+  
 
 **Sprint 2**
 
@@ -139,13 +140,19 @@ Wir werden die einzeln Sprint folgendermaßen umsetzten:
 
 ## Review
 
+**Sprint 1:** 
+
+  Wir haben die erste Version 0.1 an einer kurzen Demo präsentiert, in der präsentierten Version waren aber noch nicht alle Funktionen vorhanden und werden in der Finalen Version 1.0 abgeliefert.
 
 
+**Sprint 2:**
+
+  Abschluss des Projekts, es konnten nicht alle Funktionen hinzugefügt werden da uns einfach die Zeit fehlte.
+  Die fehlenden Funktionen können aber auch nach dem Abschluss noch weiter Entwickelt werden.
 
 
 
 ## Retrospektive
-
 
 **Probleme**
 Zusammenarbeit mit GIT
@@ -207,12 +214,12 @@ Vor jedem Start eines Task wird diese imTeam besprochen
 [ ] Insert Data
   [ ] Neue Gruppe erstellen 
   [ ] Benutzer 
-[ ] Doku abschließen gemäss LB3 @Stefan S
+[x] Doku abschließen gemäss LB3 @Stefan S
 [ ] Open Task on Double klick 
 [ ] Communication @I E
   [x] Read from DB 
   [ ] Write from DB 
-[ ] Design überarbeitetn @Stefan S
+[ ] Design überarbeiten @Stefan S
   [ ] Filter
 [ ] Put in DB 
 [ ] Rollen definition
@@ -224,6 +231,10 @@ Vor jedem Start eines Task wird diese imTeam besprochen
 [x] Dialog new Task @Markus L 
 [x] Collections on DB @I E
 
+
+
+
+## Abgabe: 
 
 
 
@@ -324,6 +335,7 @@ DB Scrips
     
     CREATE TABLE Sprint (
     spr_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    spr_name varchar(50),
     spr_blog_id int
     );
     
