@@ -219,7 +219,7 @@
                                             <label>Sprint</label>
                                             <md-select ng-change="showSaveButton = true"
                                                        ng-model="sprint.sprint_name">
-                                                <md-option ng-repeat="sprint in sprints" value="{{sprint.spr_name}}">
+                                                <md-option ng-repeat="sprint in sprints" value="{{$index+1}}">
                                                     {{sprint.spr_name}}
                                                 </md-option>
                                             </md-select>
@@ -250,7 +250,7 @@
                                                 <label>Projectstatus</label>
                                                 <md-select ng-change="showSaveButton = true"
                                                            ng-model="update_status_angular">
-                                                    <md-option ng-repeat="projectstate in projectstatus" value="{{projectstate.value}}">
+                                                    <md-option ng-repeat="projectstate in projectstatus" value="{{$index+1}}">
                                                         {{projectstate.abbrev}}
                                                     </md-option>
                                                 </md-select>

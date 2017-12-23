@@ -32,7 +32,7 @@ openTaskTracker_App.controller('openTaskTracker_Ctrl', function ($scope, $http, 
     }, true);
 
 
-    $scope.projectstatus = ('open closed running' +
+    $scope.projectstatus = ('open running done' +
         '').split(' ').map(function(state) {
         return {abbrev: state};
     });

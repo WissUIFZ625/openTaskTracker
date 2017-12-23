@@ -173,6 +173,51 @@ $(document).ready(function () {
 
     });
 
+    $("body").on("click", "#update_new_task", function(e) {
+
+        var titel = $("#update_task_titel").val();
+        var description = $("#update_beschrieb_titel").val();
+        var prio = $("#update_prio").val();
+        var sprint = $("#update_sprint").val();
+        var status = $("#update_status").val();
+
+        scopetmp.closeDialog();
+
+        if (titel && description && prio && sprint && status  ) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'ajax/update_task.php',
+                data: {
+                    titel: titel,
+                    description: description,
+                    prio: prio,
+                    sprint:sprint,
+                    status:status
+
+                },
+                success: function (data) {
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                },
+
+            }).done(function(result)
+            {
+                scopetmp.message('Änderungen wurden gespeichert', '')
+                //setTimeout(function() { scopetmp.clear();}, 2000);
+
+
+            });
+        }else
+        {
+            scopetmp.message('Änderungen konnten nicht gespeichert werden', '')
+        }
+
+    });
+
 
 
 });
