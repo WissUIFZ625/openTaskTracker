@@ -59,7 +59,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
 </head>
 <body id="atmosphere-responsive" class="js notouch loaded" ng-controller="openTaskTracker_Ctrl">
 
-<img src="image/ic_control_point_black_24px.svg">
+
 <div>
     <md-toolbar>
         <div class="md-toolbar-tools">
