@@ -66,12 +66,12 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
             <md-truncate>OpenTaskTracker</md-truncate>
             <span flex></span>
             <md-menu md-offset="30 35">
-            <a style="color:white;" id="settings" ng-click="$mdMenu.open($event)"><?php echo htmlentities($_SESSION['username']); ?></a>
+            <a style="color:white;" id="settings" ng-click="$mdMenu.open($event)"><?php echo "<img src=\"image/ic_control_point_black_24px.svg\">"?><?php echo htmlentities($_SESSION['username']); ?></a>
 
                 <md-menu-content>
 
                     <md-menu-item id="new_group">
-                        <md-button ng-click="showDialoges('opennewgroup')">Neue Gruppe erstellen</md-button>
+                        <md-button ng-click="showDialoges('opennewgroup') ">Neue Gruppe erstellen</md-button>
                     </md-menu-item>
 
                     <md-menu-item id="new_group">
@@ -79,7 +79,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                     </md-menu-item>
 
                     <md-menu-item id="new_projekt">
-                        <md-button ng-click="showDialoges('newProject')">Neues Projekt</md-button>
+                        <md-button ng-click="showDialoges('newProject') ; getGroup();">Neues Projekt</md-button>
                     </md-menu-item>
 
                     <md-menu-item id="new_projekt">
@@ -87,7 +87,7 @@ is_as_admin_permitted($pdo, 'index.php', 'index.php', 'Keine Berechtigung fuer E
                     </md-menu-item>
 
                     <md-menu-item id="new_sprint">
-                        <md-button ng-click="test()">Neuer Sprint </md-button>
+                        <md-button ng-click="showDialoges('opennewSprint'); getProjekt();">Neuer Sprint </md-button>
                     </md-menu-item>
 
                 </md-menu-content>

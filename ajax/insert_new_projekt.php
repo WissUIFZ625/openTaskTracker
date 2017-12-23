@@ -30,8 +30,8 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
 ) {
 
- /*   var_dump($titel);
-    return;*/
+    /*   var_dump($titel);
+       return;*/
     $stmt = $pdo->prepare
     (
         "INSERT INTO project (pro_name, pro_grp_id, pro_pst_id) VALUES (:TITEL, :GROUP, :STATE)"
@@ -48,6 +48,8 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
         );
         $stmt->bindParam(':TITEL', $titel);
 
+        $stmt->execute();
+
         $db_result = $stmt->fetch(PDO::FETCH_ASSOC);
         $id_projekt = $db_result['pro_id'];
 
@@ -61,9 +63,35 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
             if ($stmt->execute()) {
 
-                $output = true;
-            }
+                $stmt = $pdo->prepare
+                (
+                    "SELECT blog_id FROM backlog WHERE blog_pro_id = :IDPROJEKT LIMIT 1"
+                );
+                $stmt->bindParam(':IDPROJEKT', $id_projekt);
 
+                $stmt->execute();
+
+                $db_result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $id_backlog = $db_result['blog_id'];
+
+                if ($db_result != false) {
+
+                    $stmt = $pdo->prepare
+                    (
+                        "INSERT INTO sprint (spr_blog_id, spr_name) VALUES (:IDBACKLOG, 'Sprint 1')"
+                    );
+                    $stmt->bindParam(':IDBACKLOG', $id_backlog);
+
+                    if ($stmt->execute()) {
+
+                        $output = true;
+                    }
+
+                }
+
+            } else {
+
+            }
         }
 
 
@@ -72,7 +100,7 @@ if (//Schmeisst Error, wenn leeres Formular versendet wird; bei anderen Feldern 
 
 } else {
     //echo 'Bedingungen nicht eingehalten';
-   $output = false;
+    $output = false;
     exit();
 }
 

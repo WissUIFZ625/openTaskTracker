@@ -39,7 +39,7 @@ $(document).ready(function () {
             }).done(function(result)
             {
                 scopetmp.message('Der Neue Task wurde gespeichert', 'Der Status wurde automatisch auf open gesetzt')
-                setTimeout(function() { scopetmp.clear();}, 2000);
+                //setTimeout(function() { scopetmp.clear();}, 2000);
 
 
             });
@@ -80,7 +80,7 @@ $(document).ready(function () {
 
             }).done(function(result)
             {
-                scopetmp.message('Das neue Projekt wurde gespeichert', 'Es wurde ein Backlog für diese Projekt erstellt')
+                scopetmp.message('Das neue Projekt wurde gespeichert', 'Es wurde ein Backlog und der erste Sprint für diese Projekt erstellt')
                 setTimeout(function() { scopetmp.clear();}, 2000);
 
             });
@@ -131,6 +131,48 @@ $(document).ready(function () {
         }
 
     });
+
+    $("body").on("click", "#insert_new_sprint", function(e) {
+
+        var sprintname = $("#inp_new_sprint_name").val();
+        var projekt = $("#inp_add_projekt_sprint").val();
+
+
+        scopetmp.closeDialog();
+
+        if (sprintname,projekt) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'ajax/insert_new_sprint.php',
+                data: {
+                    sprintname: sprintname,
+                    projekt: projekt,
+
+                },
+                success: function (data) {
+
+                    scopetmp.message('Der Neue Sprint wurde erstellt.', 'Der Sprint wurde dem Backlog vom Projekt zugeordnet.')
+
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                },
+
+            }).done(function(result)
+            {
+
+
+            });
+        }else
+        {
+            scopetmp.message('Es wurd keine neuer Sprint erstellt', 'Es ist ein Fehler aufgetreten oder es Wurde keinem Projekt zugeordnet.')
+        }
+
+    });
+
 
 
 });
